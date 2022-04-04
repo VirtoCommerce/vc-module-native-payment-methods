@@ -1,0 +1,28 @@
+{
+    "NativePaymentMethods": {
+        "blades": {
+            "hello-world": {
+                "title": "Hello world blade"
+            }
+        }
+    },
+    "permissions": {
+        "NativePaymentMethods:access": "Open NativePaymentMethods menu",
+        "NativePaymentMethods:create": "Create NativePaymentMethods related data",
+        "NativePaymentMethods:read": "View NativePaymentMethods related data",
+        "NativePaymentMethods:update": "Update NativePaymentMethods related data",
+        "NativePaymentMethods:delete": "Delete NativePaymentMethods related data"
+    },
+    "settings": {
+        "NativePaymentMethods": {
+            "NativePaymentMethodsPassword": {
+                "title": "NativePaymentMethods Password",
+                "description": "NativePaymentMethods Password setting"
+            },
+            "NativePaymentMethodsEnabled": {
+                "title": "NativePaymentMethods Enabled",
+                "description": "NativePaymentMethods Enabled setting"
+            }
+        }
+    }
+}
