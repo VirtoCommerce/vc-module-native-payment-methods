@@ -1,5 +1,6 @@
 using EntityFrameworkCore.Triggers;
 using Microsoft.EntityFrameworkCore;
+using VirtoCommerce.NativePaymentMethods.Data.Models;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
 {
@@ -16,9 +17,10 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //        modelBuilder.Entity<NativePaymentMethodsEntity>().ToTable("MyModule").HasKey(x => x.Id);
-            //        modelBuilder.Entity<NativePaymentMethodsEntity>().Property(x => x.Id).HasMaxLength(128);
-            //        base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<NativePaymentMethodEntity>().ToTable("NativePaymentMethods").HasKey(x => x.Id);
+            modelBuilder.Entity<NativePaymentMethodEntity>().Property(x => x.Id).HasMaxLength(128).ValueGeneratedOnAdd();
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

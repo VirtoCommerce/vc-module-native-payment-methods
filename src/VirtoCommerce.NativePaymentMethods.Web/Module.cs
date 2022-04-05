@@ -1,10 +1,13 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using VirtoCommerce.NativePaymentMethods.Core;
+using VirtoCommerce.NativePaymentMethods.Core.Services;
 using VirtoCommerce.NativePaymentMethods.Data.Repositories;
+using VirtoCommerce.NativePaymentMethods.Data.Services;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
@@ -24,6 +27,11 @@ namespace VirtoCommerce.NativePaymentMethods.Web
                 var configuration = provider.GetRequiredService<IConfiguration>();
                 options.UseSqlServer(configuration.GetConnectionString(ModuleInfo.Id) ?? configuration.GetConnectionString("VirtoCommerce"));
             });
+
+            
+            serviceCollection.AddTransient<INativePaymentMethodsRepository, NativePaymentMethodsRepository>();
+            serviceCollection.AddTransient<Func<INativePaymentMethodsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<INativePaymentMethodsRepository>());
+            serviceCollection.AddTransient<IPaymentMethodsService, PaymentMethodsService>();
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)

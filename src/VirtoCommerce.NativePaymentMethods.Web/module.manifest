@@ -5,11 +5,11 @@
     <version-tag></version-tag>
     <platformVersion>3.209.0</platformVersion>
     <dependencies>
-        <dependency id="VirtoCommerce.Core" version="3.201.0" /> 
+        <dependency id="VirtoCommerce.Core" version="3.201.0" />
     </dependencies>
 
-    <title>VirtoCommerce NativePaymentMethods extension module</title>
-    <description>VirtoCommerce NativePaymentMethods extension module</description>
+    <title>Native Payment Methods</title>
+    <description>Non-integrative payment methods support</description>
 
     <authors>
         <author>Mikhail Getmanskiy</author>
@@ -29,7 +29,4 @@
     <copyright>Copyright © 2022 VirtoCommerce. All rights reserved</copyright>
     <tags>extension module</tags>
     <useFullTypeNameInSwagger>false</useFullTypeNameInSwagger>
-
 </module>
-
-
