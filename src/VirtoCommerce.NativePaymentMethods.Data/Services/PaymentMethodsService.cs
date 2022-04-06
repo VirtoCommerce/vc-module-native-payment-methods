@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using VirtoCommerce.NativePaymentMethods.Core.Events;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
-using VirtoCommerce.NativePaymentMethods.Core.Services;
 using VirtoCommerce.NativePaymentMethods.Data.Models;
 using VirtoCommerce.NativePaymentMethods.Data.Repositories;
 using VirtoCommerce.Platform.Core.Caching;
@@ -15,8 +14,7 @@ using VirtoCommerce.Platform.Data.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
-    public class PaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>,
-        IPaymentMethodsService
+    public class PaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>
     {
         private new readonly Func<INativePaymentMethodsRepository> _repositoryFactory;
 
@@ -28,7 +26,14 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
 
         protected override async Task<IEnumerable<NativePaymentMethodEntity>> LoadEntities(IRepository repository, IEnumerable<string> ids, string responseGroup)
         {
-            return await ((INativePaymentMethodsRepository)repository).GetPaymentMethodsByIdsAsync(ids);
+            var paymentMethodsRepository = repository as INativePaymentMethodsRepository;
+
+            if (paymentMethodsRepository == null)
+            {
+                throw new ArgumentException(nameof(repository));
+            }
+
+            return await paymentMethodsRepository.GetPaymentMethodsByIdsAsync(ids);
         }
 
         public async Task<IEnumerable<NativePaymentMethod>> GetAll()

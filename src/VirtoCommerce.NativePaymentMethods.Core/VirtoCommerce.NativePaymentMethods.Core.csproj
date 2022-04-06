@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Notifications\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

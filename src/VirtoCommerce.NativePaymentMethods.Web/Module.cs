@@ -5,9 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using VirtoCommerce.NativePaymentMethods.Core;
-using VirtoCommerce.NativePaymentMethods.Core.Services;
+using VirtoCommerce.NativePaymentMethods.Core.Models;
+using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
 using VirtoCommerce.NativePaymentMethods.Data.Repositories;
 using VirtoCommerce.NativePaymentMethods.Data.Services;
+using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
@@ -31,7 +33,8 @@ namespace VirtoCommerce.NativePaymentMethods.Web
             
             serviceCollection.AddTransient<INativePaymentMethodsRepository, NativePaymentMethodsRepository>();
             serviceCollection.AddTransient<Func<INativePaymentMethodsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<INativePaymentMethodsRepository>());
-            serviceCollection.AddTransient<IPaymentMethodsService, PaymentMethodsService>();
+            serviceCollection.AddTransient<ICrudService<NativePaymentMethod>, PaymentMethodsService>();
+            serviceCollection.AddTransient<ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod>, PaymentMethodsSearchService>();
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)
