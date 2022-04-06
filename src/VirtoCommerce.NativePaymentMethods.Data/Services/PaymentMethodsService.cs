@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using VirtoCommerce.NativePaymentMethods.Core.Events;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Data.Models;
@@ -34,22 +32,6 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
             }
 
             return await paymentMethodsRepository.GetPaymentMethodsByIdsAsync(ids);
-        }
-
-        public async Task<IEnumerable<NativePaymentMethod>> GetAll()
-        {
-            using var repository = _repositoryFactory();
-            var entities = await repository.PaymentMethods.ToListAsync();
-
-            var result = entities.Select(x =>
-            {
-                var paymentMethod = AbstractTypeFactory<NativePaymentMethod>.TryCreateInstance();
-                x.ToModel(paymentMethod);
-
-                return paymentMethod;
-            });
-
-            return result;
         }
     }
 }

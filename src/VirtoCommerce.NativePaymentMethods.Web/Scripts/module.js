@@ -16,8 +16,8 @@ angular.module(moduleName, [])
                         '$scope', 'platformWebApp.bladeNavigationService', function ($scope, bladeNavigationService) {
                             var newBlade = {
                                 id: 'blade1',
-                                controller: 'NativePaymentMethods.helloWorldController',
-                                template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/blades/hello-world.html',
+                                controller: 'NativePaymentMethods.methodsListController',
+                                template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/blades/methods-list.tpl.html',
                                 isClosingDisabled: true
                             };
                             bladeNavigationService.showBlade(newBlade);
@@ -31,8 +31,8 @@ angular.module(moduleName, [])
             //Register module in main menu
             var menuItem = {
                 path: 'browse/NativePaymentMethods',
-                icon: 'fa fa-cube',
-                title: 'NativePaymentMethods',
+                icon: 'fa fa-money',
+                title: 'NativePaymentMethods.menu-item-name',
                 priority: 100,
                 action: function () { $state.go('workspace.NativePaymentMethodsState'); },
                 permission: 'NativePaymentMethods:access'

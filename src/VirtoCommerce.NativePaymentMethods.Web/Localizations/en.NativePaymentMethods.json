@@ -1,11 +1,15 @@
 {
-    "NativePaymentMethods": {
-        "blades": {
-            "hello-world": {
-                "title": "Hello world blade"
-            }
-        }
-    },
+  "NativePaymentMethods": {
+    "menu-item-name": "Non-integrative payment methods",
+    "blades": {
+      "methods-list": {
+        "title": "Non-integrative payment methods",
+        "labels": {
+          "payment-methods": "Payment methods" 
+        } 
+      }
+    }
+  },
     "permissions": {
         "NativePaymentMethods:access": "Open NativePaymentMethods menu",
         "NativePaymentMethods:create": "Create NativePaymentMethods related data",
