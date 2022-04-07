@@ -38,5 +38,11 @@ angular.module(moduleName, [])
                 permission: 'NativePaymentMethods:access'
             };
             mainMenuService.addMenuItem(menuItem);
+
+            //Register widgets
+            widgetService.registerWidget({
+                controller: 'NativePaymentMethods.paymentLogoWidgetController',
+                template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/widgets/payment-logo-widget.html'
+            }, 'nativePaymentDetails');
         }
     ]);
