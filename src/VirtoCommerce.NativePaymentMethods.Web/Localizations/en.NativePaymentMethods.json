@@ -5,9 +5,18 @@
       "methods-list": {
         "title": "Non-integrative payment methods",
         "labels": {
-          "payment-methods": "Payment methods" 
+          "payment-methods": "Payment methods"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "New payment method",
+          "name": "Name",
+          "code": "Code",
+          "description": "Description",
+          "isEnabled": "Enabled" 
         } 
-      }
+      } 
     }
   },
     "permissions": {

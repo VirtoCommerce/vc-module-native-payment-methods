@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody ng-model="blade.data">
-                        <tr class="table-item" ng-repeat="data in blade.data track by data.code" ng-class="{'__selected': data.code === selectedNodeId}">
+                        <tr class="table-item" ng-repeat="data in blade.data track by data.code" ng-class="{'__selected': data.id === selectedNodeId}">
                             <td class="table-col __product-control">
                                 <label class="form-control __checkbox">
                                     <input type="checkbox" ng-model="data.selected" ng-change="updateSelectionList()">

@@ -1,50 +1,72 @@
 angular.module('NativePaymentMethods')
-    .controller('NativePaymentMethods.methodsListController', ['$scope', 'NativePaymentMethods.webApi', function ($scope, api) {
-        var selectedItems = [];
+    .controller('NativePaymentMethods.methodsListController', ['$scope', 'NativePaymentMethods.webApi', 'platformWebApp.bladeNavigationService',
+        ($scope, api, bladeNavigationService) => {
+            var selectedItems = [];
 
-        var blade = $scope.blade;
-        blade.title = 'NativePaymentMethods.blades.methods-list.title';
-        blade.headIcon = 'fa fa-money';
-        blade.toolbarCommands = [
-            {
-                name: "platform.commands.refresh", icon: 'fa fa-refresh',
-                executeMethod: () => { blade.refresh() },
-                canExecuteMethod: () => true
-            },
-            {
-                name: "platform.commands.delete", icon: 'fa fa-trash',
-                executeMethod: () => {
-                    var ids = selectedItems.map(x => x.id);
+            var blade = $scope.blade;
+            blade.title = 'NativePaymentMethods.blades.methods-list.title';
+            blade.headIcon = 'fa fa-money';
+            blade.toolbarCommands = [
+                {
+                    name: "platform.commands.refresh", icon: 'fa fa-refresh',
+                    executeMethod: () => { blade.refresh() },
+                    canExecuteMethod: () => true
+                },
+                {
+                    name: "platform.commands.add", icon: 'fa fa-plus',
+                    executeMethod: () => { showDetailsBlade(null) },
+                    canExecuteMethod: () => true
+                },
+                {
+                    name: "platform.commands.delete", icon: 'fa fa-trash',
+                    executeMethod: () => {
+                        var ids = selectedItems.map(x => x.id);
 
-                    api.delete({ ids: ids }, (result) => {
-                            console.log(result);
+                        api.delete({ ids: ids }, (result) => {
                             blade.refresh();
                         });
-                },
-                canExecuteMethod: () => selectedItems.length > 0
+                    },
+                    canExecuteMethod: () => selectedItems.length > 0
+                }
+            ];
+
+            blade.refresh = () => {
+                blade.isLoading = true;
+                api.get((data) => {
+                    blade.data = data.results;
+                    blade.selectedAll = false;
+
+                    blade.isLoading = false;
+                });
+            };
+
+            $scope.updateSelectionList = () => {
+                selectedItems = blade.data.filter((item) => item.selected);
             }
-        ];
 
-        blade.refresh = () => {
-            blade.isLoading = true;
-            api.get((data) => {
-                blade.data = data.results;
-                blade.selectedAll = false;
+            $scope.selectAll = (selected) => {
+                angular.forEach(blade.data, (item) => {
+                    item.selected = selected;
+                });
+                $scope.updateSelectionList();
+            }
 
-                blade.isLoading = false;
-            });
-        };
+            $scope.selectNode = (node) => {
+                $scope.selectedNodeId = node.id;
 
-        $scope.updateSelectionList = () => {
-            selectedItems = blade.data.filter((item) => item.selected);
-        }
+                showDetailsBlade(node.id);
+            }
 
-        $scope.selectAll = (selected) => {
-            angular.forEach(blade.data, (item) => {
-                item.selected = selected;
-            });
-            $scope.updateSelectionList();
-        }
+            function showDetailsBlade (itemId) {
+                var detailsBlade = {
+                    id: 'payment-method-details',
+                    controller: 'NativePaymentMethods.methodDetailsController',
+                    template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/blades/method-details.tpl.html',
+                    currentEntityId: itemId
+                };
 
-        blade.refresh();
-    }]);
+                bladeNavigationService.showBlade(detailsBlade);
+            }
+
+            blade.refresh();
+        }]);

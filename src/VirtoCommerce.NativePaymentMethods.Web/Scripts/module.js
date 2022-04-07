@@ -15,7 +15,7 @@ angular.module(moduleName, [])
                     controller: [
                         '$scope', 'platformWebApp.bladeNavigationService', function ($scope, bladeNavigationService) {
                             var newBlade = {
-                                id: 'blade1',
+                                id: 'payment-methods-list',
                                 controller: 'NativePaymentMethods.methodsListController',
                                 template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/blades/methods-list.tpl.html',
                                 isClosingDisabled: true

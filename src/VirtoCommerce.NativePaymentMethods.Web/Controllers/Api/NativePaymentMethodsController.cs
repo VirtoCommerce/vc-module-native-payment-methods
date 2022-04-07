@@ -33,6 +33,14 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
             return Ok(await _searchService.SearchAsync(new PaymentMethodsSearchCriteria()));
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        [Authorize(ModuleConstants.Security.Permissions.Read)]
+        public async Task<NativePaymentMethod> GetById(string id)
+        {
+            return await _service.GetByIdAsync(id);
+        }
+
         [HttpPost]
         [Route("")]
         [Authorize(ModuleConstants.Security.Permissions.Create)]
