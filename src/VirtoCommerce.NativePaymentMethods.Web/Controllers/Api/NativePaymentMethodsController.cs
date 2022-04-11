@@ -13,24 +13,29 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
     [Route("api/native-payment-methods")]
     public class NativePaymentMethodsController : Controller
     {
-        private readonly ICrudService<NativePaymentMethod> _service;
+        private readonly ICrudService<NativePaymentMethod> _paymentMethodsService;
 
         private readonly ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod> _searchService;
 
         public NativePaymentMethodsController(
-            ICrudService<NativePaymentMethod> service,
+            ICrudService<NativePaymentMethod> paymentMethodsService,
             ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod> searchService)
         {
-            _service = service;
+            _paymentMethodsService = paymentMethodsService;
             _searchService = searchService;
         }
 
         [HttpGet]
         [Route("")]
         [Authorize(ModuleConstants.Security.Permissions.Read)]
-        public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll()
+        public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll(PaymentMethodsSearchCriteria criteria)
         {
-            return Ok(await _searchService.SearchAsync(new PaymentMethodsSearchCriteria()));
+            if (criteria == null)
+            {
+                criteria = new PaymentMethodsSearchCriteria();
+            }
+
+            return Ok(await _searchService.SearchAsync(criteria));
         }
 
         [HttpGet]
@@ -38,7 +43,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Read)]
         public async Task<NativePaymentMethod> GetById(string id)
         {
-            return await _service.GetByIdAsync(id);
+            return await _paymentMethodsService.GetByIdAsync(id);
         }
 
         [HttpPost]
@@ -46,7 +51,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Create)]
         public async Task<ActionResult> AddOrUpdate([FromBody] NativePaymentMethod paymentMethod)
         {
-            await _service.SaveChangesAsync(new[] { paymentMethod });
+            await _paymentMethodsService.SaveChangesAsync(new[] { paymentMethod });
 
             return Ok();
         }
@@ -56,7 +61,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Delete)]
         public async Task<ActionResult> Delete(string[] ids)
         {
-            await _service.DeleteAsync(ids);
+            await _paymentMethodsService.DeleteAsync(ids);
 
             return Ok();
         }
