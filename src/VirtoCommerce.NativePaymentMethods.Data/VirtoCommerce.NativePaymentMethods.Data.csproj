@@ -17,9 +17,7 @@
     <Folder Include="Caching\" />
     <Folder Include="ExportImport\" />
     <Folder Include="Handlers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

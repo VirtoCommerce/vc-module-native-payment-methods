@@ -1,11 +1,38 @@
 {
-    "NativePaymentMethods": {
-        "blades": {
-            "hello-world": {
-                "title": "Hello world blade"
-            }
+  "NativePaymentMethods": {
+    "menu-item-name": "Non-integrative payment methods",
+    "blades": {
+      "methods-list": {
+        "title": "Non-integrative payment methods",
+        "labels": {
+          "payment-methods": "Payment methods"
         }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "New payment method",
+          "name": "Name",
+          "code": "Code",
+          "description": "Description",
+          "isEnabled": "Enabled"
+        }
+      },
+      "payment-logo": {
+        "title": "Payment logo"
+      }
     },
+    "widgets": {
+      "payment-logo": {
+        "title": "Payment logo"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Save changes",
+        "message": "The data has been modified. Do you want to save changes?"
+      }
+    }
+  },
     "permissions": {
         "NativePaymentMethods:access": "Open NativePaymentMethods menu",
         "NativePaymentMethods:create": "Create NativePaymentMethods related data",

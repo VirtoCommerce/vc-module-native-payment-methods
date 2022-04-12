@@ -1,0 +1,43 @@
+<div class="themeSettingsBlade themeSettingsBlade__blade-content">
+    <div class="themeSettingsBlade themeSettingsBlade__blade-inner">
+        <div class="themeSettingsBlade themeSettingsBlade__inner-block">
+            <form name="formScope" class="uploader uploader__form">
+                <fieldset ng-init="setForm(formScope)">
+                    <div class="uploader uploader__form-group">
+                        <label class="uploader uploader__form-label">Choose new logo</label>
+                        <div over-class="bd-blue" uploader="logoUploader" nv-file-over nv-file-drop class="uploader uploader__drag-area">
+                            <input id="logoUploaderInput" ng-show="false" type="file" nv-file-select uploader="logoUploader" />
+                            <div class="uploader uploader__drag-content">
+                                <div class="uploader uploader__icon-container"><i class="fas fa-cloud-upload-alt fa-2x"></i></div>
+                                <div class="uploader uploader__comment">
+                                    {{ 'platform.blades.settings-uploader.drag-drop-comment' | translate }} <br>
+                                    {{ 'platform.blades.settings-uploader.or' | translate }}
+                                    <a href="#" ng-click="browseFiles('logoUploaderInput')">{{ 'platform.blades.settings-uploader.browse-your-files' | translate }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uploader uploader__hint">Select image with min height 30px of the PNG, JPG or SVG format</div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="uploader uploader__pb-container" ng-if="logoUploader.isUploading">
+                <div class="sub-t">Progress</div>
+                <div class="progress-bar __aqua" ng-style="{'width': logoUploader.progress + '%'}"></div>
+            </div>
+
+            <!-- preview -->
+            <div class="sub-t">Preview</div>
+            <div style="border: 1px solid #eaedf3; padding: 20px 15px 25px 15px;">
+
+                <div style="float: left;">
+                    <img style="width: 30px; height: 30px;" ng-if="blade.currentEntity.logoUrl" ng-src="{{ blade.currentEntity.logoUrl }}" alt="logo">
+                    <i class="table-ico fa fa-gears" ng-if="!blade.currentEntity.logoUrl"></i>
+                </div>
+                <div style="padding-left: 20px; margin: 0" class="form-label">Test method</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

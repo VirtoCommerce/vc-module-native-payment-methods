@@ -7,17 +7,17 @@ if (AppDependencies !== undefined) {
 
 angular.module(moduleName, [])
     .config(['$stateProvider', '$urlRouterProvider',
-        function ($stateProvider, $urlRouterProvider) {
+        ($stateProvider, $urlRouterProvider) => {
             $stateProvider
                 .state('workspace.NativePaymentMethodsState', {
                     url: '/NativePaymentMethods',
                     templateUrl: '$(Platform)/Scripts/common/templates/home.tpl.html',
                     controller: [
-                        '$scope', 'platformWebApp.bladeNavigationService', function ($scope, bladeNavigationService) {
+                        '$scope', 'platformWebApp.bladeNavigationService', ($scope, bladeNavigationService) => {
                             var newBlade = {
-                                id: 'blade1',
-                                controller: 'NativePaymentMethods.helloWorldController',
-                                template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/blades/hello-world.html',
+                                id: 'payment-methods-list',
+                                controller: 'NativePaymentMethods.methodsListController',
+                                template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/blades/methods-list.tpl.html',
                                 isClosingDisabled: true
                             };
                             bladeNavigationService.showBlade(newBlade);
@@ -27,16 +27,22 @@ angular.module(moduleName, [])
         }
     ])
     .run(['platformWebApp.mainMenuService', 'platformWebApp.widgetService', '$state',
-        function (mainMenuService, widgetService, $state) {
+        (mainMenuService, widgetService, $state) => {
             //Register module in main menu
             var menuItem = {
                 path: 'browse/NativePaymentMethods',
-                icon: 'fa fa-cube',
-                title: 'NativePaymentMethods',
+                icon: 'fa fa-money',
+                title: 'NativePaymentMethods.menu-item-name',
                 priority: 100,
-                action: function () { $state.go('workspace.NativePaymentMethodsState'); },
+                action: () => { $state.go('workspace.NativePaymentMethodsState'); },
                 permission: 'NativePaymentMethods:access'
             };
             mainMenuService.addMenuItem(menuItem);
+
+            //Register widgets
+            widgetService.registerWidget({
+                controller: 'NativePaymentMethods.paymentLogoWidgetController',
+                template: 'Modules/$(VirtoCommerce.NativePaymentMethods)/Scripts/widgets/payment-logo-widget.html'
+            }, 'nativePaymentDetails');
         }
     ]);
