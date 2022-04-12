@@ -15,11 +15,11 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
     {
         private readonly ICrudService<NativePaymentMethod> _service;
 
-        private readonly ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod> _searchService;
+        private readonly ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> _searchService;
 
         public NativePaymentMethodsController(
             ICrudService<NativePaymentMethod> service,
-            ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod> searchService)
+            ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> searchService)
         {
             _service = service;
             _searchService = searchService;
@@ -30,7 +30,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Read)]
         public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll()
         {
-            return Ok(await _searchService.SearchAsync(new PaymentMethodsSearchCriteria()));
+            return Ok(await _searchService.SearchAsync(new NativePaymentMethodsSearchCriteria()));
         }
 
         [HttpGet]

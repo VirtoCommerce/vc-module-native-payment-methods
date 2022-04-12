@@ -38,17 +38,17 @@ angular.module('NativePaymentMethods')
 
             blade.metaFields = [
                 {
+                    name: 'code',
+                    isRequired: true,
+                    isReadOnly: blade.currentEntityId,
+                    title: "NativePaymentMethods.blades.method-details.labels.code",
+                    valueType: "ShortText"
+                },
+                {
                     name: 'name',
                     isRequired: true,
                     isReadOnly: false,
                     title: "NativePaymentMethods.blades.method-details.labels.name",
-                    valueType: "ShortText"
-                },
-                {
-                    name: 'code',
-                    isRequired: true,
-                    isReadOnly: false,
-                    title: "NativePaymentMethods.blades.method-details.labels.code",
                     valueType: "ShortText"
                 },
                 {

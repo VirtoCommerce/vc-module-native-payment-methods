@@ -33,8 +33,8 @@ namespace VirtoCommerce.NativePaymentMethods.Web
 
             serviceCollection.AddTransient<INativePaymentMethodsRepository, NativePaymentMethodsRepository>();
             serviceCollection.AddTransient<Func<INativePaymentMethodsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<INativePaymentMethodsRepository>());
-            serviceCollection.AddTransient<ICrudService<NativePaymentMethod>, PaymentMethodsService>();
-            serviceCollection.AddTransient<ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod>, PaymentMethodsSearchService>();
+            serviceCollection.AddTransient<ICrudService<NativePaymentMethod>, NativePaymentMethodsService>();
+            serviceCollection.AddTransient<ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>, NativePaymentMethodsSearchService>();
             serviceCollection.AddTransient<IDynamicPaymentTypeService, DynamicPaymentTypeService>();
         }
 
@@ -63,6 +63,13 @@ namespace VirtoCommerce.NativePaymentMethods.Web
                     dbContext.Database.Migrate();
                 }
             }
+
+            // register in memory payment methods
+            var dynamicPaymentTypeService = appBuilder.ApplicationServices.GetRequiredService<IDynamicPaymentTypeService>();
+            var searchService = appBuilder.ApplicationServices.GetRequiredService<ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>>();
+            var searchCriteria = new NativePaymentMethodsSearchCriteria() { IsEnabled = true };
+            var activePaymentMethods = searchService.SearchAsync(searchCriteria).GetAwaiter().GetResult();
+            dynamicPaymentTypeService.InitDynamicPaymentMethods(activePaymentMethods.Results);
         }
 
         public void Uninstall()

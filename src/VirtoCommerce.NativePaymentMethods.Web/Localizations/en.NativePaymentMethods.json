@@ -41,15 +41,11 @@
         "NativePaymentMethods:delete": "Delete NativePaymentMethods related data"
     },
     "settings": {
-        "NativePaymentMethods": {
-            "NativePaymentMethodsPassword": {
-                "title": "NativePaymentMethods Password",
-                "description": "NativePaymentMethods Password setting"
-            },
-            "NativePaymentMethodsEnabled": {
-                "title": "NativePaymentMethods Enabled",
-                "description": "NativePaymentMethods Enabled setting"
-            }
+      "NativePaymentMethods": {
+        "DefaultSetting": {
+          "title": "Default setting",
+          "description": "Default settings for non-integrative payment method"
         }
+      }
     }
 }
