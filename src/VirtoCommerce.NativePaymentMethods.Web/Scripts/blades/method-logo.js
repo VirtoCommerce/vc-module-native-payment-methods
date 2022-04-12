@@ -13,7 +13,7 @@ angular.module('NativePaymentMethods')
                     filters: [{
                         name: 'imageFilter',
                         fn: (item) => {
-                            const approval = /^.*\.(png|gif|svg)$/.test(item.name);
+                            const approval = /^.*\.(png|jpg|svg)$/.test(item.name);
                             if (!approval) {
                                 const dialog = {
                                     title: "Filetype error",
@@ -26,7 +26,7 @@ angular.module('NativePaymentMethods')
                     }]
                 });
 
-                logoUploader.url = 'api/assets?folderUrl=paymentLogos';
+                logoUploader.url = 'api/assets?folderUrl=nativepaymentlogos';
 
                 logoUploader.onSuccessItem = (_, uploadedImages) => {
                     blade.currentEntity.logoUrl = uploadedImages[0].url;
