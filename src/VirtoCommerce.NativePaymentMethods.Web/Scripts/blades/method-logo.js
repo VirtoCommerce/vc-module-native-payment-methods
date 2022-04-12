@@ -17,7 +17,7 @@ angular.module('NativePaymentMethods')
                             if (!approval) {
                                 const dialog = {
                                     title: "Filetype error",
-                                    message: "Only PNG, GIF or SVG files are allowed.",
+                                    message: "Only PNG, JPG or SVG files are allowed.",
                                 }
                                 dialogService.showErrorDialog(dialog);
                             }
