@@ -1,9 +1,9 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 using VirtoCommerce.NativePaymentMethods.Core;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
@@ -34,8 +34,8 @@ namespace VirtoCommerce.NativePaymentMethods.Web
             serviceCollection.AddSingleton<Func<INativePaymentMethodsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<INativePaymentMethodsRepository>());
 
             serviceCollection.AddTransient<INativePaymentMethodsRepository, NativePaymentMethodsRepository>();
-            serviceCollection.AddTransient<ICrudService<NativePaymentMethod>, PaymentMethodsService>();
-            serviceCollection.AddTransient<ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod>, PaymentMethodsSearchService>();
+            serviceCollection.AddTransient<ICrudService<NativePaymentMethod>, NativePaymentMethodsService>();
+            serviceCollection.AddTransient<ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>, NativePaymentMethodsSearchService>();
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)

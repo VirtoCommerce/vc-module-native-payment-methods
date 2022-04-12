@@ -12,21 +12,21 @@ using VirtoCommerce.Platform.Data.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
-    public class PaymentMethodsSearchService : SearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod, NativePaymentMethodEntity>
+    public class NativePaymentMethodsSearchService : SearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod, NativePaymentMethodEntity>
     {
-        public PaymentMethodsSearchService(Func<INativePaymentMethodsRepository> repositoryFactory, IPlatformMemoryCache platformMemoryCache, ICrudService<NativePaymentMethod> crudService)
+        public NativePaymentMethodsSearchService(Func<INativePaymentMethodsRepository> repositoryFactory, IPlatformMemoryCache platformMemoryCache, ICrudService<NativePaymentMethod> crudService)
             : base(repositoryFactory, platformMemoryCache, crudService)
         {
         }
 
-        protected override IQueryable<NativePaymentMethodEntity> BuildQuery(IRepository repository, PaymentMethodsSearchCriteria criteria)
+        protected override IQueryable<NativePaymentMethodEntity> BuildQuery(IRepository repository, NativePaymentMethodsSearchCriteria criteria)
         {
             var query = ((INativePaymentMethodsRepository)repository).PaymentMethods;
 
             return query;
         }
 
-        protected override IList<SortInfo> BuildSortExpression(PaymentMethodsSearchCriteria criteria)
+        protected override IList<SortInfo> BuildSortExpression(NativePaymentMethodsSearchCriteria criteria)
         {
             var sortInfos = criteria.SortInfos;
             if (sortInfos.IsNullOrEmpty())

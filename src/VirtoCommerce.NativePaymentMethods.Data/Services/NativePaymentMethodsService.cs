@@ -12,11 +12,11 @@ using VirtoCommerce.Platform.Data.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
-    public class PaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>
+    public class NativePaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>
     {
         private new readonly Func<INativePaymentMethodsRepository> _repositoryFactory;
 
-        public PaymentMethodsService(Func<INativePaymentMethodsRepository> repositoryFactory, IPlatformMemoryCache platformMemoryCache, IEventPublisher eventPublisher)
+        public NativePaymentMethodsService(Func<INativePaymentMethodsRepository> repositoryFactory, IPlatformMemoryCache platformMemoryCache, IEventPublisher eventPublisher)
             : base(repositoryFactory, platformMemoryCache, eventPublisher)
         {
             _repositoryFactory = repositoryFactory;

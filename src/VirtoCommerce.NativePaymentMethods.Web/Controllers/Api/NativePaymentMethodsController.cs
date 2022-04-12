@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VirtoCommerce.NativePaymentMethods.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using VirtoCommerce.NativePaymentMethods.Core;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
 using VirtoCommerce.Platform.Core.GenericCrud;
@@ -15,11 +15,11 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
     {
         private readonly ICrudService<NativePaymentMethod> _paymentMethodsService;
 
-        private readonly ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod> _searchService;
+        private readonly ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> _searchService;
 
         public NativePaymentMethodsController(
             ICrudService<NativePaymentMethod> paymentMethodsService,
-            ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, NativePaymentMethod> searchService)
+            ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> searchService)
         {
             _paymentMethodsService = paymentMethodsService;
             _searchService = searchService;
@@ -28,11 +28,11 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [HttpGet]
         [Route("")]
         [Authorize(ModuleConstants.Security.Permissions.Read)]
-        public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll(PaymentMethodsSearchCriteria criteria)
+        public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll(NativePaymentMethodsSearchCriteria criteria)
         {
             if (criteria == null)
             {
-                criteria = new PaymentMethodsSearchCriteria();
+                criteria = new NativePaymentMethodsSearchCriteria();
             }
 
             return Ok(await _searchService.SearchAsync(criteria));
