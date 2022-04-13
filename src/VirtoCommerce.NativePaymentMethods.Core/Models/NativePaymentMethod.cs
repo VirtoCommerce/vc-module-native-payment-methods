@@ -4,7 +4,7 @@ using VirtoCommerce.PaymentModule.Model.Requests;
 
 namespace VirtoCommerce.NativePaymentMethods.Core.Models
 {
-    public class NativePaymentMethod : PaymentMethod, ICloneable
+    public class NativePaymentMethod : PaymentMethod
     {
         public NativePaymentMethod() : base(null)
         {
@@ -35,10 +35,6 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
 
         public override CapturePaymentRequestResult CaptureProcessPayment(CapturePaymentRequest request)
         {
-            //TODO
-            //context.Payment.IsApproved = true;
-            //context.Payment.PaymentStatus = PaymentStatus.Paid;
-            //context.Payment.VoidedDate = DateTime.UtcNow;
             return new CapturePaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid };
         }
 
