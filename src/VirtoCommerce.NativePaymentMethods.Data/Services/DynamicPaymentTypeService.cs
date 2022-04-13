@@ -93,17 +93,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
 
         public async Task DeleteDynamicPaymentMethodsAsync(IEnumerable<NativePaymentMethod> nativePaymentMethods)
         {
-            var codes = new List<string>();
-
-            foreach (var nativePaymentMethod in nativePaymentMethods)
-            {
-                codes.Add(nativePaymentMethod.Code);
-
-                var typeName = $"{_paymentMethodPrefix}_{ nativePaymentMethod.Code}";
-                RemoveTypeByName<PaymentMethod>(typeName);
-            }
-
-            GenericSearchCachingRegion<PaymentMethod>.ExpireRegion();
+            var codes = nativePaymentMethods.Select(x => x.Code).ToList();
 
             if (codes.Any())
             {
@@ -118,6 +108,14 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
 
                 await _paymentMethodCrudService.DeleteAsync(ids);
             }
+
+            foreach (var code in codes)
+            {
+                var typeName = $"{_paymentMethodPrefix}_{code}";
+                RemoveTypeByName<PaymentMethod>(typeName);
+            }
+
+            GenericSearchCachingRegion<PaymentMethod>.ExpireRegion();
         }
 
         protected virtual Type CreatePaymentMethod(string className)
