@@ -18,10 +18,10 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         private readonly ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> _searchService;
 
         public NativePaymentMethodsController(
-            ICrudService<NativePaymentMethod> service,
+            ICrudService<NativePaymentMethod> paymentMethodsService,
             ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> searchService)
         {
-            _paymentMethodsService = service;
+            _paymentMethodsService = paymentMethodsService;
             _searchService = searchService;
         }
 
