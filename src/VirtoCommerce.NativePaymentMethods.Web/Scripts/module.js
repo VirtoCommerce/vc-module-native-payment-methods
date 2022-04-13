@@ -7,13 +7,13 @@ if (AppDependencies !== undefined) {
 
 angular.module(moduleName, [])
     .config(['$stateProvider', '$urlRouterProvider',
-        function ($stateProvider, $urlRouterProvider) {
+        ($stateProvider, $urlRouterProvider) => {
             $stateProvider
                 .state('workspace.NativePaymentMethodsState', {
                     url: '/NativePaymentMethods',
                     templateUrl: '$(Platform)/Scripts/common/templates/home.tpl.html',
                     controller: [
-                        '$scope', 'platformWebApp.bladeNavigationService', function ($scope, bladeNavigationService) {
+                        '$scope', 'platformWebApp.bladeNavigationService', ($scope, bladeNavigationService) => {
                             var newBlade = {
                                 id: 'payment-methods-list',
                                 controller: 'NativePaymentMethods.methodsListController',
@@ -27,14 +27,14 @@ angular.module(moduleName, [])
         }
     ])
     .run(['platformWebApp.mainMenuService', 'platformWebApp.widgetService', '$state',
-        function (mainMenuService, widgetService, $state) {
+        (mainMenuService, widgetService, $state) => {
             //Register module in main menu
             var menuItem = {
                 path: 'browse/NativePaymentMethods',
                 icon: 'fa fa-money',
                 title: 'NativePaymentMethods.menu-item-name',
                 priority: 100,
-                action: function () { $state.go('workspace.NativePaymentMethodsState'); },
+                action: () => { $state.go('workspace.NativePaymentMethodsState'); },
                 permission: 'NativePaymentMethods:access'
             };
             mainMenuService.addMenuItem(menuItem);

@@ -1,6 +1,6 @@
 angular.module('NativePaymentMethods')
     .controller('NativePaymentMethods.paymentDetailsLogoController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService',
-        function ($scope, FileUploader, bladeNavigationService, dialogService) {
+        ($scope, FileUploader, bladeNavigationService, dialogService) => {
             var blade = $scope.blade;
             blade.title = 'NativePaymentMethods.blades.payment-logo.title';
 
@@ -12,12 +12,12 @@ angular.module('NativePaymentMethods')
                     removeAfterUpload: true,
                     filters: [{
                         name: 'imageFilter',
-                        fn: function (item) {
-                            const approval = /^.*\.(png|gif|svg)$/.test(item.name);
+                        fn: (item) => {
+                            const approval = /^.*\.(png|jpg|svg)$/.test(item.name);
                             if (!approval) {
                                 const dialog = {
                                     title: "Filetype error",
-                                    message: "Only PNG, GIF or SVG files are allowed.",
+                                    message: "Only PNG, JPG or SVG files are allowed.",
                                 }
                                 dialogService.showErrorDialog(dialog);
                             }
@@ -26,18 +26,18 @@ angular.module('NativePaymentMethods')
                     }]
                 });
 
-                logoUploader.url = 'api/assets?folderUrl=paymentLogos';
+                logoUploader.url = 'api/assets?folderUrl=nativepaymentlogos';
 
-                logoUploader.onSuccessItem = function (_, uploadedImages) {
+                logoUploader.onSuccessItem = (_, uploadedImages) => {
                     blade.currentEntity.logoUrl = uploadedImages[0].url;
                 };
 
-                logoUploader.onErrorItem = function (element, response, status, _) {
+                logoUploader.onErrorItem = (element, response, status, _) => {
                     bladeNavigationService.setError(element._file.name + ' failed: ' + (response.message ? response.message : status), blade);
                 };
             }
 
-            blade.refresh = function () {
+            blade.refresh = () => {
                 blade.originalEntity = blade.currentEntity;
                 blade.currentEntity = angular.copy(blade.currentEntity);
 
@@ -45,9 +45,9 @@ angular.module('NativePaymentMethods')
             };
 
             let formScope;
-            $scope.setForm = function (form) { formScope = form; }
+            $scope.setForm = (form) => { formScope = form; }
 
-            $scope.browseFiles = function (id) {
+            $scope.browseFiles = (id) => {
                 window.document.querySelector(`#${id}`).click()
             }
 
@@ -59,7 +59,7 @@ angular.module('NativePaymentMethods')
                 return isDirty() && formScope && formScope.$valid;
             }
 
-            blade.saveChanges = function () {
+            blade.saveChanges = () => {
                 angular.copy(blade.currentEntity, blade.originalEntity);
                 $scope.bladeClose();
             };
@@ -72,14 +72,14 @@ angular.module('NativePaymentMethods')
                 },
                 {
                     name: "platform.commands.set-to-default", icon: 'fa fa-undo',
-                    executeMethod: function () {
+                    executeMethod: () => {
                         blade.currentEntity.logoUrl = null;
                     },
-                    canExecuteMethod: function () { return true; }
+                    canExecuteMethod: () => true
                 }
             ];
 
-            blade.onClose = function (closeCallback) {
+            blade.onClose = (closeCallback) => {
                 bladeNavigationService.showConfirmationIfNeeded(isDirty(), canSave(), blade, blade.saveChanges, closeCallback,
                     "NativePaymentMethods.dialogs.payment-details-save.title", "NativePaymentMethods.dialogs.payment-details-save.message");
             };

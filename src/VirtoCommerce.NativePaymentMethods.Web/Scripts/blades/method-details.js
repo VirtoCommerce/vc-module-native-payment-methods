@@ -24,7 +24,7 @@ angular.module('NativePaymentMethods')
                 blade.isLoading = false;
             };
 
-            $scope.setForm = function (form) {
+            $scope.setForm = (form) => {
                 blade.formScope = form;
             };
 

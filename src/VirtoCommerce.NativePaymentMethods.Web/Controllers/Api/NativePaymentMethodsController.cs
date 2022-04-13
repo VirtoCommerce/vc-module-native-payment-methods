@@ -30,6 +30,11 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Read)]
         public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll()
         {
+            if (criteria == null)
+            {
+                criteria = new NativePaymentMethodsSearchCriteria();
+            }
+
             return Ok(await _searchService.SearchAsync(new NativePaymentMethodsSearchCriteria()));
         }
 
