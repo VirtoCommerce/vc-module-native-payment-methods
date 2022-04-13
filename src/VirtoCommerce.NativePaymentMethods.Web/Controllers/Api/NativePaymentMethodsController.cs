@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VirtoCommerce.NativePaymentMethods.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using VirtoCommerce.NativePaymentMethods.Core;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
 using VirtoCommerce.Platform.Core.GenericCrud;
@@ -28,14 +28,14 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [HttpGet]
         [Route("")]
         [Authorize(ModuleConstants.Security.Permissions.Read)]
-        public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll()
+        public async Task<ActionResult<IEnumerable<NativePaymentMethod>>> GetAll(NativePaymentMethodsSearchCriteria criteria)
         {
             if (criteria == null)
             {
                 criteria = new NativePaymentMethodsSearchCriteria();
             }
 
-            return Ok(await _searchService.SearchAsync(new NativePaymentMethodsSearchCriteria()));
+            return Ok(await _searchService.SearchAsync(criteria));
         }
 
         [HttpGet]
