@@ -11,8 +11,6 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
 
         }
 
-        public string Name { get; set; }
-
         public bool IsEnabled { get; set; }
 
         public override PaymentMethodType PaymentMethodType => PaymentMethodType.Unknown;

@@ -26,7 +26,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="VirtoCommerce.PaymentModule.Core" Version="3.202.0-beta2" />
+    <PackageReference Include="VirtoCommerce.PaymentModule.Core" Version="3.202.0-beta3" />
     <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.209.0" />
   </ItemGroup>
 
