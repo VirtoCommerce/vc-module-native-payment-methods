@@ -70,44 +70,35 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
         {
             InitDynamicPaymentMethods(nativePaymentMethods);
 
-            GenericSearchCachingRegion<PaymentMethod>.ExpireRegion();
-
-            var codes = nativePaymentMethods.Select(x => x.Code).ToList();
-
-            if (codes.Any())
+            var criteria = new PaymentMethodsSearchCriteria
             {
-                var criteria = new PaymentMethodsSearchCriteria
-                {
-                    Codes = codes,
-                    WithoutTransient = true,
-                };
+                Codes = nativePaymentMethods.Select(x => x.Code).ToList(),
+                WithoutTransient = true,
+            };
 
-                var methodsToUpdate = await _paymentMethodSearchService.SearchAsync(criteria);
+            var methodsToUpdate = await _paymentMethodSearchService.SearchAsync(criteria);
 
-                foreach (var persistentMethodId in methodsToUpdate.Results.Select(x => x.Id))
-                {
-                    GenericCachingRegion<PaymentMethod>.ExpireTokenForKey(persistentMethodId);
-                }
+            foreach (var persistentMethodId in methodsToUpdate.Results.Select(x => x.Id))
+            {
+                GenericCachingRegion<PaymentMethod>.ExpireTokenForKey(persistentMethodId);
             }
+
+            GenericSearchCachingRegion<PaymentMethod>.ExpireRegion();
         }
 
         public async Task DeleteDynamicPaymentMethodsAsync(IEnumerable<NativePaymentMethod> nativePaymentMethods)
         {
             var codes = nativePaymentMethods.Select(x => x.Code).ToList();
 
-            if (codes.Any())
+            var criteria = new PaymentMethodsSearchCriteria
             {
-                var criteria = new PaymentMethodsSearchCriteria
-                {
-                    Codes = codes,
-                    WithoutTransient = true,
-                };
+                Codes = codes,
+                WithoutTransient = true,
+            };
 
-                var methodsToDelete = await _paymentMethodSearchService.SearchAsync(criteria);
-                var ids = methodsToDelete.Results.Select(x => x.Id);
-
-                await _paymentMethodCrudService.DeleteAsync(ids);
-            }
+            var methodsToDelete = await _paymentMethodSearchService.SearchAsync(criteria);
+            var ids = methodsToDelete.Results.Select(x => x.Id);
+            await _paymentMethodCrudService.DeleteAsync(ids);
 
             foreach (var code in codes)
             {
