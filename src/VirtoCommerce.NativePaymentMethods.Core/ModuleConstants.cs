@@ -23,28 +23,18 @@ namespace VirtoCommerce.NativePaymentMethods.Core
         {
             public static class General
             {
-                public static SettingDescriptor NativePaymentMethodsEnabled { get; } = new SettingDescriptor
+                public static SettingDescriptor DefaultSetting { get; } = new SettingDescriptor
                 {
-                    Name = "NativePaymentMethods.NativePaymentMethodsEnabled",
+                    Name = "NativePaymentMethods.DefaultSetting",
                     GroupName = "NativePaymentMethods|General",
-                    ValueType = SettingValueType.Boolean,
-                    DefaultValue = false
-                };
-
-                public static SettingDescriptor NativePaymentMethodsPassword { get; } = new SettingDescriptor
-                {
-                    Name = "NativePaymentMethods.NativePaymentMethodsPassword",
-                    GroupName = "NativePaymentMethods|Advanced",
-                    ValueType = SettingValueType.SecureString,
-                    DefaultValue = "qwerty"
+                    ValueType = SettingValueType.ShortText
                 };
 
                 public static IEnumerable<SettingDescriptor> AllSettings
                 {
                     get
                     {
-                        yield return NativePaymentMethodsEnabled;
-                        yield return NativePaymentMethodsPassword;
+                        yield return DefaultSetting;
                     }
                 }
             }

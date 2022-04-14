@@ -5,6 +5,7 @@
     <version-tag></version-tag>
     <platformVersion>3.209.0</platformVersion>
     <dependencies>
+        <dependency id="VirtoCommerce.Payment" version="3.202.0" />
     </dependencies>
 
     <title>Native Payment Methods</title>

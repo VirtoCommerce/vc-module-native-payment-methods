@@ -10,12 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="VirtoCommerce.PaymentModule.Core" Version="3.202.0" />
     <PackageReference Include="VirtoCommerce.Platform.Core" Version="3.209.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Notifications\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

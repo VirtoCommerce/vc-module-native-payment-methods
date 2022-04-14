@@ -23,6 +23,11 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
         {
             var query = ((INativePaymentMethodsRepository)repository).PaymentMethods;
 
+            if (criteria.IsEnabled.HasValue)
+            {
+                query = query.Where(x => x.IsEnabled == criteria.IsEnabled.Value);
+            }
+
             return query;
         }
 
