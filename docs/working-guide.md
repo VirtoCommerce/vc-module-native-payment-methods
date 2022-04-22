@@ -18,3 +18,9 @@ Click on the Add menu item above the list opens a blade for creating a payment m
 Enable switch controls avaliability of the created method for stores: only the methods with the turned on switch will be available for stores.
 
 ![Creating](media/03-creating.png)
+
+## Deleting
+
+Cheking at least one payment method in the list makes Delete button active. Click on it deletes selected methods.
+
+![Deleting](media/04-deleting.png)
