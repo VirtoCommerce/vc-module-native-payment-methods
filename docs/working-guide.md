@@ -1,50 +1,54 @@
-# Starting with non-integrative payment methdos
-When module is intalled, you can find a corresponding menu item
+# Getting Started
+Once you have installed the module, you will see the relevant menu item under the *...More* section:
 
 ![Menu item](media/01-main-menu.png)
 
-# Managing non-integrative payment methods
+# Managing Non-Integrative Payment Methods
 
-## Viewing
+## Viewing Payment Methods
 
-Click on the menu item opens a blade with a created non-integrative payment methods list. Click on a methods opens a details blade.
+Click on the menu item to open the screen with the non-integrative payment method list. To see the details, click the method in question:
 
 ![List](media/02-list.png)
 
-## Creating
+## Creating New Payment Methods
 
-Click on the Add menu item above the list opens a blade for creating a payment method. Here you should provide values for the requireed fields Name and Code. Aslo by desire you can provide a description and change payment method logo by click on a widget below. Note that the code cannot be changed after the method is created, and codes must be unique not only among other non-integrative payment methods but amoung all payment methods existing in the system. Other payment methods can be found in the Store settings. 
+Click the *Add* menu item above the list to open the *New Payment Method* screen. Here, you need to provide values for the required fields, *Name* and *Code*. Optionally, you can also provide a description and change the payment method logo by clicking the widget in the bottom part of the screen.
 
-Logo and description provide default values of a payment method and can be overriden with different values for each store.
+> Note: The code cannot be changed after the method has been created. Any code must be unique not only among other non-integrative payment methods, but also amoung all payment methods that exist in the system.
 
-Enable switch controls avaliability of the created method for stores: only the methods with the turned on switch will be available for stores.
+> Tip: You can find other payment methods in the store settings. 
+
+Both the *Logo* widget and the *Description* text box provide default values of a payment method and can be overriden with different values for each store.
+
+The *Enable* toggle makes the payment method in question available for stores only when it is on.
 
 ![Creating](media/03-creating.png)
 
-## Deleting
+## Deleting Payment Methods
 
-Cheking at least one payment method in the list makes Delete button active. Click on it deletes selected methods.
+Selecting at least one payment method in the list makes the *Delete* button active. Click it to remove the selected method(s):
 
 ![Deleting](media/04-deleting.png)
 
-## Editing
+## Editing Payment Methods
 
-You can edit payment method by click on it in the list. Editing process is the same as the creating exept that the Code cannot be cahnged.
+You can edit any payment method by clicking it in the list. The editing process is the same as when you create a new methopd, except that the *Code* value cannot be changed.
 
-# Using of non-integrative payment methods
+# Using Payment Methods
 
-## Managing for stores
+## Managing for Stores
 
-All non-integrative payment methods with active Enabled setting are avaliable for all stores.
+All non-integrative payment methods with the *Enabled* toggle on become avaliable for all stores:
 
 ![Store list](media/05-store-list.png)
 
-Managing of all kinds of payment methods is the same. You can enable a method for a store, switch partial payments setting, change logo and description (it will override default values). 
+Managing all kinds of payment methods is basically the same. You can enable a method for a store, switch partial payment setting, and change logo and description, which will override the default values:
 
 ![Store method managing](media/06-store-method-edit.png)
 
 ## Getting via Experience API
 
-All enabled for store payment methods are available in the shopping cart no metter what kind of the method is. 
+All e-payment methods that are active for stores are also available in the shopping cart, no matter what kind of a method it is. Here is how the XAPI to get such methods looks like: 
 
 ![Getting via XApi](media/07-xapi.png)
