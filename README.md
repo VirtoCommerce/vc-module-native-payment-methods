@@ -1,16 +1,16 @@
-# Non integrative payment methods management
+# Non-Integrative Payment Method Management
 
 ## Overview
 
-This module gives possibility of creating non-integrative payment methods without code changes. These methods cannon provide any functionality similar to Manual test payment method, but they have different codes, names, descriptions and logos and may be usefull for the designation of various kind of cash payments.
+This module enables creating non-integrative payment methods without code changes. Such methods cannon provide any functionality similar to the manual test payment method; at the same time, they have various code pieces, names, descriptions, and logos, and may be useful to designate various kinds of cash payments.
 
 ## Functional Requirements
 
-The module has dependency on VirtoCommerce Pyament Module
+The module is dependent on the Virto Commerce Payment Module.
 
 ## Documentation
 
-You can find more information on how to work with non-integrative payment methods [here](docs/working-guide.md).
+You can find more information on how to work with the non-integrative payment methods [here](docs/working-guide.md).
 
 ## License
 
