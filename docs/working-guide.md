@@ -33,6 +33,8 @@ You can edit payment method by click on it in the list. Editing process is the s
 
 # Using of non-integrative payment methods
 
+## Managing for stores
+
 All non-integrative payment methods with active Enabled setting are avaliable for all stores.
 
 ![Store list](media/05-store-list.png)
@@ -40,3 +42,9 @@ All non-integrative payment methods with active Enabled setting are avaliable fo
 Managing of all kinds of payment methods is the same. You can enable a method for a store, switch partial payments setting, change logo and description (it will override default values). 
 
 ![Store method managing](media/06-store-method-edit.png)
+
+## Using via Experience API
+
+All enabled for store payment methods are available in the shopping cart no metter what kind of the method is. 
+
+![Getting via XApi](media/07-xapi.png)
