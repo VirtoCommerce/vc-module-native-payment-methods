@@ -24,3 +24,7 @@ Enable switch controls avaliability of the created method for stores: only the m
 Cheking at least one payment method in the list makes Delete button active. Click on it deletes selected methods.
 
 ![Deleting](media/04-deleting.png)
+
+## Editing
+
+You can edit payment method by click on it in the list. Editing process is the same as the creating exept that the Code cannot be cahnged.
