@@ -43,7 +43,7 @@ Managing of all kinds of payment methods is the same. You can enable a method fo
 
 ![Store method managing](media/06-store-method-edit.png)
 
-## Using via Experience API
+## Getting via Experience API
 
 All enabled for store payment methods are available in the shopping cart no metter what kind of the method is. 
 
