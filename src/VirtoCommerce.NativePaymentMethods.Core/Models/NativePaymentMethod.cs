@@ -44,7 +44,7 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
 
         public override ValidatePostProcessRequestResult ValidatePostProcessRequest(System.Collections.Specialized.NameValueCollection queryString)
         {
-            return new ValidatePostProcessRequestResult { IsSuccess = false };
+            return new ValidatePostProcessRequestResult { IsSuccess = true };
         }
     }
 }
