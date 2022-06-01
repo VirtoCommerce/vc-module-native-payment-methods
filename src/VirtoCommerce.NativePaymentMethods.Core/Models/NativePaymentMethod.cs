@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Specialized;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.PaymentModule.Model.Requests;
 
@@ -42,7 +43,7 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
             throw new NotImplementedException();
         }
 
-        public override ValidatePostProcessRequestResult ValidatePostProcessRequest(System.Collections.Specialized.NameValueCollection queryString)
+        public override ValidatePostProcessRequestResult ValidatePostProcessRequest(NameValueCollection queryString)
         {
             return new ValidatePostProcessRequestResult { IsSuccess = true };
         }
