@@ -19,12 +19,12 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
 
         public override ProcessPaymentRequestResult ProcessPayment(ProcessPaymentRequest request)
         {
-            return new ProcessPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid };
+            return new ProcessPaymentRequestResult { IsSuccess = true };
         }
 
         public override PostProcessPaymentRequestResult PostProcessPayment(PostProcessPaymentRequest request)
         {
-            throw new NotImplementedException();
+            return new PostProcessPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid };
         }
 
         public override VoidPaymentRequestResult VoidProcessPayment(VoidPaymentRequest request)
