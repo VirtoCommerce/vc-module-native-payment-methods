@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Specialized;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.PaymentModule.Model.Requests;
 
@@ -19,12 +20,12 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
 
         public override ProcessPaymentRequestResult ProcessPayment(ProcessPaymentRequest request)
         {
-            return new ProcessPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid };
+            return new ProcessPaymentRequestResult { IsSuccess = true };
         }
 
         public override PostProcessPaymentRequestResult PostProcessPayment(PostProcessPaymentRequest request)
         {
-            throw new NotImplementedException();
+            return new PostProcessPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid };
         }
 
         public override VoidPaymentRequestResult VoidProcessPayment(VoidPaymentRequest request)
@@ -42,9 +43,9 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
             throw new NotImplementedException();
         }
 
-        public override ValidatePostProcessRequestResult ValidatePostProcessRequest(System.Collections.Specialized.NameValueCollection queryString)
+        public override ValidatePostProcessRequestResult ValidatePostProcessRequest(NameValueCollection queryString)
         {
-            return new ValidatePostProcessRequestResult { IsSuccess = false };
+            return new ValidatePostProcessRequestResult { IsSuccess = true };
         }
     }
 }
