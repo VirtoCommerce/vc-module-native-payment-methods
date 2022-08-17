@@ -16,15 +16,12 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
     public class PaymentMethodInstancingEventHandler : IEventHandler<PaymentMethodInstancingEvent>
     {
         private readonly IDynamicPaymentTypeService _dynamicPaymentTypeService;
-        private readonly ICrudService<NativePaymentMethod> _paymentMethodsService;
         private readonly ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> _searchService;
 
         public PaymentMethodInstancingEventHandler(IDynamicPaymentTypeService dynamicPaymentTypeService,
-            ICrudService<NativePaymentMethod> paymentMethodsService,
             ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> searchService)
         {
             _dynamicPaymentTypeService = dynamicPaymentTypeService;
-            _paymentMethodsService = paymentMethodsService;
             _searchService = searchService;
         }
 
@@ -71,13 +68,16 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
 
         private static void DeleteNonExistingMethodTypes(IList<NativePaymentMethod> nativePaymentMethods)
         {
-            var nativeMethodTypes = AbstractTypeFactory<NativePaymentMethod>.AllTypeInfos.ToList();
-            foreach (var nativeMethodType in nativeMethodTypes)
+            var nativeMethodTypeNames = AbstractTypeFactory<NativePaymentMethod>.AllTypeInfos
+                .Select(x => x.TypeName)
+                .ToList();
+
+            foreach (var nativeMethodTypeName in nativeMethodTypeNames)
             {
-                var exists = nativePaymentMethods.Any(x => x.TypeName == nativeMethodType.TypeName);
+                var exists = nativePaymentMethods.Any(x => x.TypeName == nativeMethodTypeName);
                 if (!exists)
                 {
-                    NativePaymentMethodTypeExtensions.RemoveTypeByName<PaymentMethod>(nativeMethodType.TypeName);
+                    NativePaymentMethodTypeExtensions.RemoveTypeByName<PaymentMethod>(nativeMethodTypeName);
                 }
             }
         }
