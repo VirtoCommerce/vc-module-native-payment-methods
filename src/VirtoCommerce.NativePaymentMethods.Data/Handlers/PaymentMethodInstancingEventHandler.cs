@@ -27,7 +27,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
 
         public async Task Handle(PaymentMethodInstancingEvent message)
         {
-            if (string.IsNullOrEmpty(message.TypeName))
+            if (string.IsNullOrEmpty(message.PaymentMethodCode))
             {
                 // syncronize all native in-memory and persistent methods (multi-instance issue)
                 var criteria = new NativePaymentMethodsSearchCriteria { IsEnabled = true, };
@@ -42,7 +42,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
             else
             {
                 // register non-registered native method in memory is absent by type name (multi-instance issue)
-                var criteria = new NativePaymentMethodsSearchCriteria { IsEnabled = true, Codes = new List<string> { message.TypeName } };
+                var criteria = new NativePaymentMethodsSearchCriteria { IsEnabled = true, Codes = new List<string> { message.PaymentMethodCode } };
                 var nativeMethodsSearchResult = await _searchService.SearchAsync(criteria);
 
                 RegisterMissingMethodTypes(nativeMethodsSearchResult.Results);
