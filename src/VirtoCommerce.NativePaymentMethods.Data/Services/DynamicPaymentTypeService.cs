@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using VirtoCommerce.NativePaymentMethods.Core;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Services;
+using VirtoCommerce.NativePaymentMethods.Data.Extensions;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.PaymentModule.Core.Model.Search;
 using VirtoCommerce.Platform.Caching;
-using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Settings;
 
@@ -18,8 +18,6 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
     public class DynamicPaymentTypeService : IDynamicPaymentTypeService
     {
-        private readonly string _paymentMethodPrefix = "DynamicPaymentMethod";
-
         private readonly ISettingsRegistrar _settingsRegistrar;
         private readonly ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, PaymentMethod> _paymentMethodSearchService;
         private readonly ICrudService<PaymentMethod> _paymentMethodCrudService;
@@ -37,10 +35,10 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
         {
             foreach (var nativePaymentMethod in nativePaymentMethods)
             {
-                var typeName = $"{_paymentMethodPrefix}_{ nativePaymentMethod.Code}";
+                var typeName = NativePaymentMethodTypeExtensions.NativePaymentMethodTypeName(nativePaymentMethod.Code);
                 var type = CreatePaymentMethod(typeName);
 
-                var typeInfo = RegisterType<PaymentMethod>(type);
+                var typeInfo = NativePaymentMethodTypeExtensions.RegisterType<PaymentMethod>(type);
 
                 var name = nativePaymentMethod.Name;
                 var code = nativePaymentMethod.Code;
@@ -102,8 +100,8 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
 
             foreach (var code in codes)
             {
-                var typeName = $"{_paymentMethodPrefix}_{code}";
-                RemoveTypeByName<PaymentMethod>(typeName);
+                var typeName = NativePaymentMethodTypeExtensions.NativePaymentMethodTypeName(code);
+                NativePaymentMethodTypeExtensions.RemoveTypeByName<PaymentMethod>(typeName);
             }
 
             GenericSearchCachingRegion<PaymentMethod>.ExpireRegion();
@@ -122,39 +120,6 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
             var type = typeBuilder.CreateType();
 
             return type;
-        }
-
-
-        /// Need to compare existing dynamic types by name so that's why can't use the default AbstractTypeFactory<PaymentMethod>.RegisterType(type)
-        private TypeInfo<BaseType> RegisterType<BaseType>(Type type)
-        {
-            TypeInfo<BaseType> typeInfo = null;
-
-            if (AbstractTypeFactory<BaseType>.AllTypeInfos is IList<TypeInfo<BaseType>> types)
-            {
-                typeInfo = types.FirstOrDefault(x => x.Type.Name == type.Name);
-
-                if (typeInfo == null)
-                {
-                    typeInfo = new TypeInfo<BaseType>(type);
-                    types.Add(typeInfo);
-                }
-            }
-
-            return typeInfo;
-        }
-
-        private void RemoveTypeByName<BaseType>(string typeName)
-        {
-            if (AbstractTypeFactory<BaseType>.AllTypeInfos is IList<TypeInfo<BaseType>> types)
-            {
-                var typeInfo = types.FirstOrDefault(x => x.Type.Name == typeName);
-
-                if (typeInfo != null)
-                {
-                    types.Remove(typeInfo);
-                }
-            }
         }
     }
 }
