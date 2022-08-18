@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VirtoCommerce.NativePaymentMethods.Core;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
 using VirtoCommerce.NativePaymentMethods.Core.Services;
@@ -51,12 +52,12 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
 
         private void RegisterMissingMethodTypes(IList<NativePaymentMethod> nativePaymentMethods)
         {
-            var nativeMethodTypes = AbstractTypeFactory<NativePaymentMethod>.AllTypeInfos.ToList();
+            var nativeMethodTypeNames = GetNativePaymentMethodTypeNames();
             var nativeMethodsToAdd = new List<NativePaymentMethod>();
             foreach (var nativeMethod in nativePaymentMethods)
             {
                 var typeName = NativePaymentMethodTypeExtensions.NativePaymentMethodTypeName(nativeMethod.Code);
-                var exists = nativeMethodTypes.Any(x => x.TypeName == typeName);
+                var exists = nativeMethodTypeNames.Any(x => x == typeName);
                 if (!exists)
                 {
                     nativeMethodsToAdd.Add(nativeMethod);
@@ -68,18 +69,27 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
 
         private static void DeleteNonExistingMethodTypes(IList<NativePaymentMethod> nativePaymentMethods)
         {
-            var nativeMethodTypeNames = AbstractTypeFactory<NativePaymentMethod>.AllTypeInfos
-                .Select(x => x.TypeName)
+            var nativeMethodTypeNames = GetNativePaymentMethodTypeNames();
+            var persistentnativeMethodTypeNames = nativePaymentMethods
+                .Select(x => NativePaymentMethodTypeExtensions.NativePaymentMethodTypeName(x.Code))
                 .ToList();
 
-            foreach (var nativeMethodTypeName in nativeMethodTypeNames)
+            foreach (var typeName in nativeMethodTypeNames)
             {
-                var exists = nativePaymentMethods.Any(x => x.TypeName == nativeMethodTypeName);
+                var exists = persistentnativeMethodTypeNames.Any(x => x == typeName);
                 if (!exists)
                 {
-                    NativePaymentMethodTypeExtensions.RemoveTypeByName<PaymentMethod>(nativeMethodTypeName);
+                    NativePaymentMethodTypeExtensions.RemoveTypeByName<PaymentMethod>(typeName);
                 }
             }
+        }
+
+        private static List<string> GetNativePaymentMethodTypeNames()
+        {
+            return AbstractTypeFactory<PaymentMethod>.AllTypeInfos
+                .Select(x => x.TypeName)
+                .Where(x => x.StartsWith(ModuleConstants.NativePaymentMethodPrefix))
+                .ToList();
         }
     }
 }
