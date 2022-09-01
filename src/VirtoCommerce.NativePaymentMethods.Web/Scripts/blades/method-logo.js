@@ -13,7 +13,7 @@ angular.module('NativePaymentMethods')
                     filters: [{
                         name: 'imageFilter',
                         fn: (item) => {
-                            const approval = /^.*\.(png|jpg|svg)$/.test(item.name);
+                            const approval = /^.*\.(png|jpg|svg)$/.test(item.name.toLowerCase());
                             if (!approval) {
                                 const dialog = {
                                     title: "Filetype error",
