@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 using VirtoCommerce.NativePaymentMethods.Core.Events;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Services;
@@ -17,14 +18,17 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
     public class NativePaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>
     {
         private readonly IDynamicPaymentTypeService _dynamicPaymentTypeService;
+        private readonly AbstractValidator<NativePaymentMethod> _nativePaymentMethodValidator;
 
         public NativePaymentMethodsService(Func<INativePaymentMethodsRepository> repositoryFactory,
             IPlatformMemoryCache platformMemoryCache,
             IEventPublisher eventPublisher,
-            IDynamicPaymentTypeService dynamicPaymentTypeService)
+            IDynamicPaymentTypeService dynamicPaymentTypeService,
+            AbstractValidator<NativePaymentMethod> nativePaymentMethodValidator)
             : base(repositoryFactory, platformMemoryCache, eventPublisher)
         {
             _dynamicPaymentTypeService = dynamicPaymentTypeService;
+            _nativePaymentMethodValidator = nativePaymentMethodValidator;
         }
 
         protected override async Task<IEnumerable<NativePaymentMethodEntity>> LoadEntities(IRepository repository, IEnumerable<string> ids, string responseGroup)
@@ -37,6 +41,15 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
             }
 
             return await paymentMethodsRepository.GetPaymentMethodsByIdsAsync(ids);
+        }
+
+        protected override Task BeforeSaveChanges(IEnumerable<NativePaymentMethod> models)
+        {
+            foreach (var method in models)
+            {
+                _nativePaymentMethodValidator.ValidateAndThrow(method);
+            }
+            return base.BeforeSaveChanges(models);
         }
 
         protected override async Task AfterSaveChangesAsync(IEnumerable<NativePaymentMethod> models, IEnumerable<GenericChangedEntry<NativePaymentMethod>> changedEntries)
