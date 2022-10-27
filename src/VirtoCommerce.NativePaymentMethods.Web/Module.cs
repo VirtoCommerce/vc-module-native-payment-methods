@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
 using VirtoCommerce.NativePaymentMethods.Core.Services;
 using VirtoCommerce.NativePaymentMethods.Data.Repositories;
 using VirtoCommerce.NativePaymentMethods.Data.Services;
+using VirtoCommerce.NativePaymentMethods.Data.Validation;
 using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
@@ -36,6 +38,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web
             serviceCollection.AddTransient<ICrudService<NativePaymentMethod>, NativePaymentMethodsService>();
             serviceCollection.AddTransient<ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>, NativePaymentMethodsSearchService>();
             serviceCollection.AddTransient<IDynamicPaymentTypeService, DynamicPaymentTypeService>();
+            serviceCollection.AddTransient<AbstractValidator<NativePaymentMethod>, NativePaymentMethodValidator>();
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)

@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VirtoCommerce.NativePaymentMethods.Core;
@@ -51,7 +54,14 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Create)]
         public async Task<ActionResult> AddOrUpdate([FromBody] NativePaymentMethod paymentMethod)
         {
-            await _paymentMethodsService.SaveChangesAsync(new[] { paymentMethod });
+            try
+            {
+                await _paymentMethodsService.SaveChangesAsync(new[] { paymentMethod });
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(GetErrorMessage(ex));
+            }
 
             return Ok();
         }
@@ -64,6 +74,12 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
             await _paymentMethodsService.DeleteAsync(ids);
 
             return Ok();
+        }
+
+        private static dynamic GetErrorMessage(ValidationException ex)
+        {
+            var message = string.Join(Environment.NewLine, ex.Errors.Select(x => x.ErrorMessage));
+            return new { message };
         }
     }
 }
