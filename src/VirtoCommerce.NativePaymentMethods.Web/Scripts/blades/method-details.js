@@ -1,6 +1,7 @@
 angular.module('NativePaymentMethods')
-    .controller('NativePaymentMethods.methodDetailsController', ['$scope', 'NativePaymentMethods.webApi', 'platformWebApp.objCompareService', 'platformWebApp.bladeNavigationService',
-        ($scope, api, objCompareService, bladeNavigationService) => {
+    .controller('NativePaymentMethods.methodDetailsController', ['$scope', 'NativePaymentMethods.webApi',
+        'platformWebApp.objCompareService', 'platformWebApp.dialogService', 'platformWebApp.bladeNavigationService',
+        ($scope, api, objCompareService, dialogService, bladeNavigationService) => {
             var blade = $scope.blade;
 
             blade.headIcon = 'fa fa-money';
@@ -77,6 +78,16 @@ angular.module('NativePaymentMethods')
                                 var listBlade = $scope.$parent.$parent.blades.find(x => x.id === "payment-methods-list");
                                 bladeNavigationService.closeBlade(blade);
                                 listBlade.refresh();
+                            },
+                            function (error) {
+                                bladeNavigationService.setError(`${error.status}: ${error.statusText}`, blade);
+
+                                var errorDialog = {
+                                    id: "errorDetails",
+                                    title: 'platform.dialogs.error-details.title',
+                                    message: error.data.message
+                                }
+                                dialogService.showErrorDialog(errorDialog);
                             });
                     },
                     canExecuteMethod: canSave
