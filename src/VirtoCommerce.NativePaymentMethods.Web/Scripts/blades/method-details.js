@@ -1,5 +1,6 @@
 angular.module('NativePaymentMethods')
-    .controller('NativePaymentMethods.methodDetailsController', ['$scope', 'NativePaymentMethods.webApi', 'platformWebApp.objCompareService', 'platformWebApp.dialogService', 'platformWebApp.bladeNavigationService',
+    .controller('NativePaymentMethods.methodDetailsController', ['$scope', 'NativePaymentMethods.webApi',
+        'platformWebApp.objCompareService', 'platformWebApp.dialogService', 'platformWebApp.bladeNavigationService',
         ($scope, api, objCompareService, dialogService, bladeNavigationService) => {
             var blade = $scope.blade;
 
