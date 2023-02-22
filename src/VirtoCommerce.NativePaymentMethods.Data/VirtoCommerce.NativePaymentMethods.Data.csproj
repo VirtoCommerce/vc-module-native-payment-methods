@@ -16,7 +16,6 @@
   <ItemGroup>
     <Folder Include="Caching\" />
     <Folder Include="ExportImport\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

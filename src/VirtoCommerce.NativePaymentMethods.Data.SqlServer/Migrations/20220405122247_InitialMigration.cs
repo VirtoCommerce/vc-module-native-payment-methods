@@ -1,9 +1,8 @@
-﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace VirtoCommerce.NativePaymentMethods.Data.Migrations
+namespace VirtoCommerce.NativePaymentMethods.Data.SqlServer.Migrations
 {
     public partial class InitialMigration : Migration
     {
