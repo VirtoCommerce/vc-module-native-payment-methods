@@ -10,11 +10,13 @@ using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
 using VirtoCommerce.NativePaymentMethods.Core.Services;
 using VirtoCommerce.NativePaymentMethods.Data.Handlers;
+using VirtoCommerce.NativePaymentMethods.Data.MySql;
+using VirtoCommerce.NativePaymentMethods.Data.PostgreSql;
 using VirtoCommerce.NativePaymentMethods.Data.Repositories;
 using VirtoCommerce.NativePaymentMethods.Data.Services;
+using VirtoCommerce.NativePaymentMethods.Data.SqlServer;
 using VirtoCommerce.NativePaymentMethods.Data.Validation;
 using VirtoCommerce.PaymentModule.Core.Events;
-using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.Platform.Core.Bus;
 using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Modularity;
@@ -30,11 +32,23 @@ namespace VirtoCommerce.NativePaymentMethods.Web
 
         public void Initialize(IServiceCollection serviceCollection)
         {
-            // database initialization
             serviceCollection.AddDbContext<NativePaymentMethodsDbContext>((provider, options) =>
             {
-                var configuration = provider.GetRequiredService<IConfiguration>();
-                options.UseSqlServer(configuration.GetConnectionString(ModuleInfo.Id) ?? configuration.GetConnectionString("VirtoCommerce"));
+                var databaseProvider = Configuration.GetValue("DatabaseProvider", "SqlServer");
+                var connectionString = Configuration.GetConnectionString(ModuleInfo.Id) ?? Configuration.GetConnectionString("VirtoCommerce");
+
+                switch (databaseProvider)
+                {
+                    case "MySql":
+                        options.UseMySqlDatabase(connectionString);
+                        break;
+                    case "PostgreSql":
+                        options.UsePostgreSqlDatabase(connectionString);
+                        break;
+                    default:
+                        options.UseSqlServerDatabase(connectionString);
+                        break;
+                }
             });
 
             serviceCollection.AddTransient<INativePaymentMethodsRepository, NativePaymentMethodsRepository>();
@@ -67,7 +81,6 @@ namespace VirtoCommerce.NativePaymentMethods.Web
             {
                 using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<NativePaymentMethodsDbContext>())
                 {
-                    dbContext.Database.EnsureCreated();
                     dbContext.Database.Migrate();
                 }
             }

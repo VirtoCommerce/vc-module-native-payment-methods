@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.NativePaymentMethods.Core\VirtoCommerce.NativePaymentMethods.Core.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.NativePaymentMethods.Data.MySql\VirtoCommerce.NativePaymentMethods.Data.MySql.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.NativePaymentMethods.Data.PostgreSql\VirtoCommerce.NativePaymentMethods.Data.PostgreSql.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.NativePaymentMethods.Data.SqlServer\VirtoCommerce.NativePaymentMethods.Data.SqlServer.csproj" />
     <ProjectReference Include="..\VirtoCommerce.NativePaymentMethods.Data\VirtoCommerce.NativePaymentMethods.Data.csproj" />
   </ItemGroup>
   <ItemGroup>

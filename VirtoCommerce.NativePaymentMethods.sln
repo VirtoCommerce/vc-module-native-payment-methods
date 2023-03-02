@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 16
-VisualStudioVersion = 16.0.29920.165
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CFC1B42A-2604-4030-BD28-7706B47C6365}"
 EndProject
@@ -13,6 +13,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.NativePaymentMethods.Tests", "tests\VirtoCommerce.NativePaymentMethods.Tests\VirtoCommerce.NativePaymentMethods.Tests.csproj", "{73D4945C-710E-4B93-AD0A-D120ECD1EA56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.NativePaymentMethods.Core", "src\VirtoCommerce.NativePaymentMethods.Core\VirtoCommerce.NativePaymentMethods.Core.csproj", "{D86FA2EF-9857-4E01-B3FF-0C529E59AC75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtoCommerce.NativePaymentMethods.Data.SqlServer", "src\VirtoCommerce.NativePaymentMethods.Data.SqlServer\VirtoCommerce.NativePaymentMethods.Data.SqlServer.csproj", "{330F8D23-47FC-407C-A068-B5BC57EB47B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtoCommerce.NativePaymentMethods.Data.MySql", "src\VirtoCommerce.NativePaymentMethods.Data.MySql\VirtoCommerce.NativePaymentMethods.Data.MySql.csproj", "{239DBDC7-EF05-42B1-B561-1700290403D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtoCommerce.NativePaymentMethods.Data.PostgreSql", "src\VirtoCommerce.NativePaymentMethods.Data.PostgreSql\VirtoCommerce.NativePaymentMethods.Data.PostgreSql.csproj", "{67555114-8669-4CBF-ADD3-F124998241D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,17 +42,33 @@ Global
 		{D86FA2EF-9857-4E01-B3FF-0C529E59AC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D86FA2EF-9857-4E01-B3FF-0C529E59AC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D86FA2EF-9857-4E01-B3FF-0C529E59AC75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{330F8D23-47FC-407C-A068-B5BC57EB47B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330F8D23-47FC-407C-A068-B5BC57EB47B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330F8D23-47FC-407C-A068-B5BC57EB47B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330F8D23-47FC-407C-A068-B5BC57EB47B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239DBDC7-EF05-42B1-B561-1700290403D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239DBDC7-EF05-42B1-B561-1700290403D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239DBDC7-EF05-42B1-B561-1700290403D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239DBDC7-EF05-42B1-B561-1700290403D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67555114-8669-4CBF-ADD3-F124998241D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67555114-8669-4CBF-ADD3-F124998241D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67555114-8669-4CBF-ADD3-F124998241D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67555114-8669-4CBF-ADD3-F124998241D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-    GlobalSection(NestedProjects) = preSolution
+	GlobalSection(NestedProjects) = preSolution
 		{2D77D3A8-B56D-4B62-9FEB-B55027C41C7A} = {CFC1B42A-2604-4030-BD28-7706B47C6365}
 		{4CFAF20F-A1E9-457F-9BCD-4645454379F9} = {CFC1B42A-2604-4030-BD28-7706B47C6365}
-		{D86FA2EF-9857-4E01-B3FF-0C529E59AC75} = {CFC1B42A-2604-4030-BD28-7706B47C6365}
 		{73D4945C-710E-4B93-AD0A-D120ECD1EA56} = {60C5F34E-58CA-43A7-AFAF-57F20755E996}
+		{D86FA2EF-9857-4E01-B3FF-0C529E59AC75} = {CFC1B42A-2604-4030-BD28-7706B47C6365}
+		{330F8D23-47FC-407C-A068-B5BC57EB47B9} = {CFC1B42A-2604-4030-BD28-7706B47C6365}
+		{239DBDC7-EF05-42B1-B561-1700290403D4} = {CFC1B42A-2604-4030-BD28-7706B47C6365}
+		{67555114-8669-4CBF-ADD3-F124998241D0} = {CFC1B42A-2604-4030-BD28-7706B47C6365}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		A64EDE21-F961-48D5-BDCC-679E7B96AFD2 = {A64EDE21-F961-48D5-BDCC-679E7B96AFD2}
+		SolutionGuid = {90CD0FB4-14B6-410C-B1AE-B0384312ADE0}
 	EndGlobalSection
 EndGlobal
