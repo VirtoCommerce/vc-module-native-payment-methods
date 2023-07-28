@@ -53,8 +53,8 @@ namespace VirtoCommerce.NativePaymentMethods.Web
 
             serviceCollection.AddTransient<INativePaymentMethodsRepository, NativePaymentMethodsRepository>();
             serviceCollection.AddTransient<Func<INativePaymentMethodsRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<INativePaymentMethodsRepository>());
-            serviceCollection.AddTransient<ICrudService<NativePaymentMethod>, NativePaymentMethodsService>();
-            serviceCollection.AddTransient<ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>, NativePaymentMethodsSearchService>();
+            serviceCollection.AddTransient<INativePaymentMethodsService, NativePaymentMethodsService>();
+            serviceCollection.AddTransient<INativePaymentMethodsSearchService, NativePaymentMethodsSearchService>();
             serviceCollection.AddTransient<IDynamicPaymentTypeService, DynamicPaymentTypeService>();
             serviceCollection.AddTransient<PaymentMethodInstancingEventHandler>();
             serviceCollection.AddTransient<AbstractValidator<NativePaymentMethod>, NativePaymentMethodValidator>();

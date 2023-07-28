@@ -15,7 +15,7 @@ using VirtoCommerce.Platform.Data.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
-    public class NativePaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>
+    public class NativePaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>, INativePaymentMethodsService
     {
         private readonly IDynamicPaymentTypeService _dynamicPaymentTypeService;
         private readonly AbstractValidator<NativePaymentMethod> _nativePaymentMethodValidator;
@@ -31,7 +31,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
             _nativePaymentMethodValidator = nativePaymentMethodValidator;
         }
 
-        protected override async Task<IEnumerable<NativePaymentMethodEntity>> LoadEntities(IRepository repository, IEnumerable<string> ids, string responseGroup)
+        protected override Task<IList<NativePaymentMethodEntity>> LoadEntities(IRepository repository, IList<string> ids, string responseGroup)
         {
             var paymentMethodsRepository = repository as INativePaymentMethodsRepository;
 
@@ -40,10 +40,10 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
                 throw new ArgumentException(nameof(repository));
             }
 
-            return await paymentMethodsRepository.GetPaymentMethodsByIdsAsync(ids);
+            return paymentMethodsRepository.GetPaymentMethodsByIdsAsync(ids);
         }
 
-        protected override Task BeforeSaveChanges(IEnumerable<NativePaymentMethod> models)
+        protected override Task BeforeSaveChanges(IList<NativePaymentMethod> models)
         {
             foreach (var method in models)
             {
@@ -52,7 +52,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
             return base.BeforeSaveChanges(models);
         }
 
-        protected override async Task AfterSaveChangesAsync(IEnumerable<NativePaymentMethod> models, IEnumerable<GenericChangedEntry<NativePaymentMethod>> changedEntries)
+        protected override async Task AfterSaveChangesAsync(IList<NativePaymentMethod> models, IList<GenericChangedEntry<NativePaymentMethod>> changedEntries)
         {
             await base.AfterSaveChangesAsync(models, changedEntries);
 
@@ -85,7 +85,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
             }
         }
 
-        protected override async Task AfterDeleteAsync(IEnumerable<NativePaymentMethod> models, IEnumerable<GenericChangedEntry<NativePaymentMethod>> changedEntries)
+        protected override async Task AfterDeleteAsync(IList<NativePaymentMethod> models, IList<GenericChangedEntry<NativePaymentMethod>> changedEntries)
         {
             await base.AfterDeleteAsync(models, changedEntries);
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using VirtoCommerce.NativePaymentMethods.Core;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
+using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.GenericCrud;
 
 
@@ -44,9 +45,9 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [HttpGet]
         [Route("{id}")]
         [Authorize(ModuleConstants.Security.Permissions.Read)]
-        public async Task<NativePaymentMethod> GetById(string id)
+        public Task<NativePaymentMethod> GetById(string id)
         {
-            return await _paymentMethodsService.GetByIdAsync(id);
+            return _paymentMethodsService.GetByIdAsync(id);
         }
 
         [HttpPost]

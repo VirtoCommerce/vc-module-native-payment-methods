@@ -9,6 +9,6 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
     public interface INativePaymentMethodsRepository : IRepository
     {
         IQueryable<NativePaymentMethodEntity> PaymentMethods { get; }
-        Task<ICollection<NativePaymentMethodEntity>> GetPaymentMethodsByIdsAsync(IEnumerable<string> ids);
+        Task<IList<NativePaymentMethodEntity>> GetPaymentMethodsByIdsAsync(IEnumerable<string> ids);
     }
 }

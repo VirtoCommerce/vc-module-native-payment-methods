@@ -10,8 +10,8 @@ using VirtoCommerce.NativePaymentMethods.Core.Services;
 using VirtoCommerce.NativePaymentMethods.Data.Extensions;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.PaymentModule.Core.Model.Search;
+using VirtoCommerce.PaymentModule.Core.Services;
 using VirtoCommerce.Platform.Caching;
-using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Settings;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
@@ -19,12 +19,12 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
     public class DynamicPaymentTypeService : IDynamicPaymentTypeService
     {
         private readonly ISettingsRegistrar _settingsRegistrar;
-        private readonly ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, PaymentMethod> _paymentMethodSearchService;
-        private readonly ICrudService<PaymentMethod> _paymentMethodCrudService;
+        private readonly IPaymentMethodsSearchService _paymentMethodSearchService;
+        private readonly IPaymentMethodsService _paymentMethodCrudService;
 
         public DynamicPaymentTypeService(ISettingsRegistrar settingsRegistrar,
-            ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, PaymentMethod> paymentMethodsSearchService,
-            ICrudService<PaymentMethod> paymentMethodsService)
+            IPaymentMethodsSearchService paymentMethodsSearchService,
+            IPaymentMethodsService paymentMethodsService)
         {
             _settingsRegistrar = settingsRegistrar;
             _paymentMethodSearchService = paymentMethodsSearchService;
@@ -95,7 +95,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
             };
 
             var methodsToDelete = await _paymentMethodSearchService.SearchAsync(criteria);
-            var ids = methodsToDelete.Results.Select(x => x.Id);
+            var ids = methodsToDelete.Results.Select(x => x.Id).ToList();
             await _paymentMethodCrudService.DeleteAsync(ids);
 
             foreach (var code in codes)
