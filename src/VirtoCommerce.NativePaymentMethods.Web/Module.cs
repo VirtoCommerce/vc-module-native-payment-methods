@@ -18,7 +18,6 @@ using VirtoCommerce.NativePaymentMethods.Data.SqlServer;
 using VirtoCommerce.NativePaymentMethods.Data.Validation;
 using VirtoCommerce.PaymentModule.Core.Events;
 using VirtoCommerce.Platform.Core.Bus;
-using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
@@ -87,7 +86,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web
 
             // register in memory payment methods
             var dynamicPaymentTypeService = appBuilder.ApplicationServices.GetRequiredService<IDynamicPaymentTypeService>();
-            var searchService = appBuilder.ApplicationServices.GetRequiredService<ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>>();
+            var searchService = appBuilder.ApplicationServices.GetRequiredService<INativePaymentMethodsSearchService>();
             var searchCriteria = new NativePaymentMethodsSearchCriteria() { IsEnabled = true };
             var activePaymentMethods = searchService.SearchAsync(searchCriteria).GetAwaiter().GetResult();
             dynamicPaymentTypeService.InitDynamicPaymentMethods(activePaymentMethods.Results);

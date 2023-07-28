@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using VirtoCommerce.NativePaymentMethods.Core;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
+using VirtoCommerce.NativePaymentMethods.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
-using VirtoCommerce.Platform.Core.GenericCrud;
 
 
 namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
@@ -17,13 +17,13 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
     [Route("api/native-payment-methods")]
     public class NativePaymentMethodsController : Controller
     {
-        private readonly ICrudService<NativePaymentMethod> _paymentMethodsService;
+        private readonly INativePaymentMethodsService _paymentMethodsService;
 
-        private readonly ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> _searchService;
+        private readonly INativePaymentMethodsSearchService _searchService;
 
         public NativePaymentMethodsController(
-            ICrudService<NativePaymentMethod> paymentMethodsService,
-            ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> searchService)
+            INativePaymentMethodsService paymentMethodsService,
+            INativePaymentMethodsSearchService searchService)
         {
             _paymentMethodsService = paymentMethodsService;
             _searchService = searchService;
