@@ -4,7 +4,7 @@ using VirtoCommerce.Platform.Core.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Core.Services
 {
-    public interface INativePaymentMethodsSearchService : ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>
+    public interface INativePaymentMethodSearchService : ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod>
     {
     }
 }

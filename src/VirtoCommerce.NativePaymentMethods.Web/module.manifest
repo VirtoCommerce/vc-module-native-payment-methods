@@ -3,7 +3,12 @@
   <id>VirtoCommerce.NativePaymentMethods</id>
   <version>3.400.0</version>
   <version-tag />
+
   <platformVersion>3.400.0</platformVersion>
+  <dependencies>
+    <dependency id="VirtoCommerce.Payment" version="3.400.0" />
+  </dependencies>
+
   <title>Native Payment Methods</title>
   <description>Non-integrative payment methods support</description>
   <authors>
@@ -20,8 +25,5 @@
   <tags>extension module</tags>
   <assemblyFile>VirtoCommerce.NativePaymentMethods.Web.dll</assemblyFile>
   <moduleType>VirtoCommerce.NativePaymentMethods.Web.Module, VirtoCommerce.NativePaymentMethods.Web</moduleType>
-  <dependencies>
-    <dependency id="VirtoCommerce.Payment" version="3.400.0" />
-  </dependencies>
   <useFullTypeNameInSwagger>false</useFullTypeNameInSwagger>
 </module>

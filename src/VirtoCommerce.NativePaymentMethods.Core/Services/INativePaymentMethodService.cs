@@ -3,7 +3,7 @@ using VirtoCommerce.Platform.Core.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Core.Services
 {
-    public interface INativePaymentMethodsService : ICrudService<NativePaymentMethod>
+    public interface INativePaymentMethodService : ICrudService<NativePaymentMethod>
     {
     }
 }

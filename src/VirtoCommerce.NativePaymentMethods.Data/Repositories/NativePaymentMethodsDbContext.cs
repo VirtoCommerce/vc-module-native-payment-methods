@@ -18,15 +18,14 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<NativePaymentMethodEntity>().ToTable("NativePaymentMethods").HasKey(x => x.Id);
             modelBuilder.Entity<NativePaymentMethodEntity>().Property(x => x.Id).HasMaxLength(128).ValueGeneratedOnAdd();
 
-            base.OnModelCreating(modelBuilder);
-
-
             // Allows configuration for an entity type for different database types.
             // Applies configuration from all <see cref="IEntityTypeConfiguration{TEntity}" in VirtoCommerce.NativePaymentMethods.Data.XXX project. /> 
-            switch (this.Database.ProviderName)
+            switch (Database.ProviderName)
             {
                 case "Pomelo.EntityFrameworkCore.MySql":
                     modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("VirtoCommerce.NativePaymentMethods.Data.MySql"));
@@ -41,4 +40,3 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
         }
     }
 }
-

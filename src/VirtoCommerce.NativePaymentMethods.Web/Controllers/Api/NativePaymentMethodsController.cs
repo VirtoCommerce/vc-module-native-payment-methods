@@ -17,15 +17,15 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
     [Route("api/native-payment-methods")]
     public class NativePaymentMethodsController : Controller
     {
-        private readonly INativePaymentMethodsService _paymentMethodsService;
+        private readonly INativePaymentMethodService _paymentMethodService;
 
-        private readonly INativePaymentMethodsSearchService _searchService;
+        private readonly INativePaymentMethodSearchService _searchService;
 
         public NativePaymentMethodsController(
-            INativePaymentMethodsService paymentMethodsService,
-            INativePaymentMethodsSearchService searchService)
+            INativePaymentMethodService paymentMethodService,
+            INativePaymentMethodSearchService searchService)
         {
-            _paymentMethodsService = paymentMethodsService;
+            _paymentMethodService = paymentMethodService;
             _searchService = searchService;
         }
 
@@ -39,7 +39,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
                 criteria = new NativePaymentMethodsSearchCriteria();
             }
 
-            return Ok(await _searchService.SearchAsync(criteria));
+            return Ok(await _searchService.SearchNoCloneAsync(criteria));
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Read)]
         public Task<NativePaymentMethod> GetById(string id)
         {
-            return _paymentMethodsService.GetByIdAsync(id);
+            return _paymentMethodService.GetNoCloneAsync(id);
         }
 
         [HttpPost]
@@ -57,7 +57,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         {
             try
             {
-                await _paymentMethodsService.SaveChangesAsync(new[] { paymentMethod });
+                await _paymentMethodService.SaveChangesAsync(new[] { paymentMethod });
             }
             catch (ValidationException ex)
             {
@@ -72,7 +72,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Delete)]
         public async Task<ActionResult> Delete(string[] ids)
         {
-            await _paymentMethodsService.DeleteAsync(ids);
+            await _paymentMethodService.DeleteAsync(ids);
 
             return Ok();
         }

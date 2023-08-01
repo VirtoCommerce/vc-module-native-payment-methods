@@ -15,12 +15,13 @@ using VirtoCommerce.Platform.Data.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
-    public class NativePaymentMethodsService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>, INativePaymentMethodsService
+    public class NativePaymentMethodService : CrudService<NativePaymentMethod, NativePaymentMethodEntity, PaymentMethodChangingEvent, PaymentMethodChangedEvent>, INativePaymentMethodService
     {
         private readonly IDynamicPaymentTypeService _dynamicPaymentTypeService;
         private readonly AbstractValidator<NativePaymentMethod> _nativePaymentMethodValidator;
 
-        public NativePaymentMethodsService(Func<INativePaymentMethodsRepository> repositoryFactory,
+        public NativePaymentMethodService(
+            Func<INativePaymentMethodsRepository> repositoryFactory,
             IPlatformMemoryCache platformMemoryCache,
             IEventPublisher eventPublisher,
             IDynamicPaymentTypeService dynamicPaymentTypeService,
@@ -33,14 +34,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
 
         protected override Task<IList<NativePaymentMethodEntity>> LoadEntities(IRepository repository, IList<string> ids, string responseGroup)
         {
-            var paymentMethodsRepository = repository as INativePaymentMethodsRepository;
-
-            if (paymentMethodsRepository == null)
-            {
-                throw new ArgumentException(nameof(repository));
-            }
-
-            return paymentMethodsRepository.GetPaymentMethodsByIdsAsync(ids);
+            return ((INativePaymentMethodsRepository)repository).GetPaymentMethodsByIdsAsync(ids);
         }
 
         protected override Task BeforeSaveChanges(IList<NativePaymentMethod> models)

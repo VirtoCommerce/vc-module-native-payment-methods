@@ -14,9 +14,12 @@ using VirtoCommerce.Platform.Data.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
-    public class NativePaymentMethodsSearchService : SearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod, NativePaymentMethodEntity>, INativePaymentMethodsSearchService
+    public class NativePaymentMethodSearchService : SearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod, NativePaymentMethodEntity>, INativePaymentMethodSearchService
     {
-        public NativePaymentMethodsSearchService(Func<INativePaymentMethodsRepository> repositoryFactory, IPlatformMemoryCache platformMemoryCache, INativePaymentMethodsService crudService,
+        public NativePaymentMethodSearchService(
+            Func<INativePaymentMethodsRepository> repositoryFactory,
+            IPlatformMemoryCache platformMemoryCache,
+            INativePaymentMethodService crudService,
             IOptions<CrudOptions> crudOptions)
             : base(repositoryFactory, platformMemoryCache, crudService, crudOptions)
         {

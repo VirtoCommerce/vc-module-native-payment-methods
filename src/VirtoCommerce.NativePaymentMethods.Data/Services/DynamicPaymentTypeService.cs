@@ -12,6 +12,7 @@ using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.PaymentModule.Core.Model.Search;
 using VirtoCommerce.PaymentModule.Core.Services;
 using VirtoCommerce.Platform.Caching;
+using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Settings;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
@@ -74,7 +75,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
                 WithoutTransient = true,
             };
 
-            var methodsToUpdate = await _paymentMethodSearchService.SearchAsync(criteria);
+            var methodsToUpdate = await _paymentMethodSearchService.SearchNoCloneAsync(criteria);
 
             foreach (var persistentMethodId in methodsToUpdate.Results.Select(x => x.Id))
             {
@@ -94,7 +95,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Services
                 WithoutTransient = true,
             };
 
-            var methodsToDelete = await _paymentMethodSearchService.SearchAsync(criteria);
+            var methodsToDelete = await _paymentMethodSearchService.SearchNoCloneAsync(criteria);
             var ids = methodsToDelete.Results.Select(x => x.Id).ToList();
             await _paymentMethodCrudService.DeleteAsync(ids);
 
