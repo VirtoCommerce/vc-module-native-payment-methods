@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Options;
 using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Core.Models.Search;
+using VirtoCommerce.NativePaymentMethods.Core.Services;
 using VirtoCommerce.NativePaymentMethods.Data.Models;
 using VirtoCommerce.NativePaymentMethods.Data.Repositories;
 using VirtoCommerce.Platform.Core.Caching;
@@ -12,10 +14,14 @@ using VirtoCommerce.Platform.Data.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Services
 {
-    public class NativePaymentMethodsSearchService : SearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod, NativePaymentMethodEntity>
+    public class NativePaymentMethodSearchService : SearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod, NativePaymentMethodEntity>, INativePaymentMethodSearchService
     {
-        public NativePaymentMethodsSearchService(Func<INativePaymentMethodsRepository> repositoryFactory, IPlatformMemoryCache platformMemoryCache, ICrudService<NativePaymentMethod> crudService)
-            : base(repositoryFactory, platformMemoryCache, crudService)
+        public NativePaymentMethodSearchService(
+            Func<INativePaymentMethodsRepository> repositoryFactory,
+            IPlatformMemoryCache platformMemoryCache,
+            INativePaymentMethodService crudService,
+            IOptions<CrudOptions> crudOptions)
+            : base(repositoryFactory, platformMemoryCache, crudService, crudOptions)
         {
         }
 

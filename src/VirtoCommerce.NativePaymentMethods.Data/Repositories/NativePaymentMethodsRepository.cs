@@ -17,7 +17,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
 
         public IQueryable<NativePaymentMethodEntity> PaymentMethods => DbContext.Set<NativePaymentMethodEntity>();
 
-        public virtual async Task<ICollection<NativePaymentMethodEntity>> GetPaymentMethodsByIdsAsync (IEnumerable<string> ids)
+        public virtual async Task<IList<NativePaymentMethodEntity>> GetPaymentMethodsByIdsAsync(IEnumerable<string> ids)
         {
             var result = await PaymentMethods.Where(x => ids.Contains(x.Id)).ToListAsync();
 

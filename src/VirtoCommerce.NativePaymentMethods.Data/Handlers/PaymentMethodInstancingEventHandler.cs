@@ -10,17 +10,15 @@ using VirtoCommerce.PaymentModule.Core.Events;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Events;
-using VirtoCommerce.Platform.Core.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
 {
     public class PaymentMethodInstancingEventHandler : IEventHandler<PaymentMethodInstancingEvent>
     {
         private readonly IDynamicPaymentTypeService _dynamicPaymentTypeService;
-        private readonly ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> _searchService;
+        private readonly INativePaymentMethodSearchService _searchService;
 
-        public PaymentMethodInstancingEventHandler(IDynamicPaymentTypeService dynamicPaymentTypeService,
-            ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> searchService)
+        public PaymentMethodInstancingEventHandler(IDynamicPaymentTypeService dynamicPaymentTypeService, INativePaymentMethodSearchService searchService)
         {
             _dynamicPaymentTypeService = dynamicPaymentTypeService;
             _searchService = searchService;
@@ -30,7 +28,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
         {
             if (message.PaymentMethodCodes.IsNullOrEmpty())
             {
-                // syncronize all native in-memory and persistent methods (multi-instance issue)
+                // synchronize all native in-memory and persistent methods (multi-instance issue)
                 var criteria = new NativePaymentMethodsSearchCriteria { IsEnabled = true, };
                 var nativeMethodsSearchResult = await _searchService.SearchAsync(criteria);
 
@@ -70,13 +68,13 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
         private static void DeleteNonExistingMethodTypes(IList<NativePaymentMethod> nativePaymentMethods)
         {
             var nativeMethodTypeNames = GetNativePaymentMethodTypeNames();
-            var persistentnativeMethodTypeNames = nativePaymentMethods
+            var persistentNativeMethodTypeNames = nativePaymentMethods
                 .Select(x => NativePaymentMethodTypeExtensions.NativePaymentMethodTypeName(x.Code))
                 .ToList();
 
             foreach (var typeName in nativeMethodTypeNames)
             {
-                var exists = persistentnativeMethodTypeNames.Any(x => x == typeName);
+                var exists = persistentNativeMethodTypeNames.Any(x => x == typeName);
                 if (!exists)
                 {
                     NativePaymentMethodTypeExtensions.RemoveTypeByName<PaymentMethod>(typeName);

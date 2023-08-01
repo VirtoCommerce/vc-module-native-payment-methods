@@ -8,8 +8,8 @@ using VirtoCommerce.NativePaymentMethods.Core.Models;
 using VirtoCommerce.NativePaymentMethods.Data.Services;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.PaymentModule.Core.Model.Search;
+using VirtoCommerce.PaymentModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
-using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Settings;
 using Xunit;
 
@@ -19,15 +19,15 @@ namespace VirtoCommerce.NativePaymentMethods.Tests
     {
         private readonly Fixture _fixture = new Fixture();
 
-        private Mock<ISettingsRegistrar> _settingsMock;
-        private Mock<ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, PaymentMethod>> _searchServiceMock;
-        private Mock<ICrudService<PaymentMethod>> _paymentServiceMock;
+        private readonly Mock<ISettingsRegistrar> _settingsMock;
+        private readonly Mock<IPaymentMethodsSearchService> _searchServiceMock;
+        private readonly Mock<IPaymentMethodsService> _paymentServiceMock;
 
         public DynamicPaymentTypeServiceTests()
         {
             _settingsMock = new Mock<ISettingsRegistrar>();
-            _searchServiceMock = new Mock<ISearchService<PaymentMethodsSearchCriteria, PaymentMethodsSearchResult, PaymentMethod>>();
-            _paymentServiceMock = new Mock<ICrudService<PaymentMethod>>();
+            _searchServiceMock = new Mock<IPaymentMethodsSearchService>();
+            _paymentServiceMock = new Mock<IPaymentMethodsService>();
         }
 
         [Fact]
@@ -72,7 +72,9 @@ namespace VirtoCommerce.NativePaymentMethods.Tests
 
         private DynamicPaymentTypeService GerService()
         {
-            _searchServiceMock.Setup(x => x.SearchAsync(It.IsAny<PaymentMethodsSearchCriteria>())).ReturnsAsync(new PaymentMethodsSearchResult());
+            _searchServiceMock
+                .Setup(x => x.SearchAsync(It.IsAny<PaymentMethodsSearchCriteria>(), It.IsAny<bool>()))
+                .ReturnsAsync(new PaymentMethodsSearchResult());
 
             var target = new DynamicPaymentTypeService(
                 _settingsMock.Object,
@@ -86,7 +88,6 @@ namespace VirtoCommerce.NativePaymentMethods.Tests
         {
             return AbstractTypeFactory<PaymentMethod>
                 .AllTypeInfos
-                .OfType<TypeInfo<PaymentMethod>>()
                 .FirstOrDefault(x => x.TypeName.Contains(nativePaymentMethod.Code));
         }
     }
