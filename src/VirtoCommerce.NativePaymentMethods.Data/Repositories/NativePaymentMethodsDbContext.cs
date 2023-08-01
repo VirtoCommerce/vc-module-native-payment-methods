@@ -7,6 +7,8 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
 {
     public class NativePaymentMethodsDbContext : DbContextWithTriggers
     {
+        public const int PrimaryKeyLength = 128;
+
         public NativePaymentMethodsDbContext(DbContextOptions<NativePaymentMethodsDbContext> options)
           : base(options)
         {
@@ -21,7 +23,7 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<NativePaymentMethodEntity>().ToTable("NativePaymentMethods").HasKey(x => x.Id);
-            modelBuilder.Entity<NativePaymentMethodEntity>().Property(x => x.Id).HasMaxLength(128).ValueGeneratedOnAdd();
+            modelBuilder.Entity<NativePaymentMethodEntity>().Property(x => x.Id).HasMaxLength(PrimaryKeyLength).ValueGeneratedOnAdd();
 
             // Allows configuration for an entity type for different database types.
             // Applies configuration from all <see cref="IEntityTypeConfiguration{TEntity}" in VirtoCommerce.NativePaymentMethods.Data.XXX project. /> 
