@@ -10,17 +10,16 @@ using VirtoCommerce.PaymentModule.Core.Events;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Events;
-using VirtoCommerce.Platform.Core.GenericCrud;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Handlers
 {
     public class PaymentMethodInstancingEventHandler : IEventHandler<PaymentMethodInstancingEvent>
     {
         private readonly IDynamicPaymentTypeService _dynamicPaymentTypeService;
-        private readonly ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> _searchService;
+        private readonly INativePaymentMethodsSearchService _searchService;
 
         public PaymentMethodInstancingEventHandler(IDynamicPaymentTypeService dynamicPaymentTypeService,
-            ISearchService<NativePaymentMethodsSearchCriteria, NativePaymentMethodsSearchResult, NativePaymentMethod> searchService)
+            INativePaymentMethodsSearchService searchService)
         {
             _dynamicPaymentTypeService = dynamicPaymentTypeService;
             _searchService = searchService;
