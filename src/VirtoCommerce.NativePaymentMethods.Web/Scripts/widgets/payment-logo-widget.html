@@ -1,6 +1,6 @@
 <div class="gridster-cnt" ng-click="openBlade()">
     <div class="cnt-inner">
-        <i class="fas fa-money-bill-wave fa-2x fa-gray" ng-if="!blade.currentEntity.logoUrl"></i>
+        <i class="fas fa-money-bill-wave fa-2x fa-gray" ng-hide="blade.currentEntity.logoUrl"></i>
         <img style="height:47px;width:47px;" ng-if="blade.currentEntity.logoUrl" ng-src="{{ blade.currentEntity.logoUrl }}">
         <div class="list-t">{{ 'NativePaymentMethods.widgets.payment-logo.title' | translate }}</div>
     </div>
