@@ -49,7 +49,7 @@ namespace VirtoCommerce.NativePaymentMethods.Tests
         }
 
         [Fact]
-        public async void RegisterDynamicPaymentMethodsAsync_MethodNotRegistered_MethodRegistered()
+        public async Task RegisterDynamicPaymentMethodsAsync_MethodNotRegistered_MethodRegistered()
         {
             // Arrange
             var target = GerService();
@@ -64,10 +64,10 @@ namespace VirtoCommerce.NativePaymentMethods.Tests
             var typeInfo = GetPaymentMethodType(nativePaymentMethod);
             var paymentMethod = AbstractTypeFactory<PaymentMethod>.TryCreateInstance(typeInfo.TypeName) as NativePaymentMethod;
 
-            paymentMethod.Code.Should().Equals(nativePaymentMethod.Code);
-            paymentMethod.Name.Should().Equals(nativePaymentMethod.Name);
-            paymentMethod.LogoUrl.Should().Equals(nativePaymentMethod.LogoUrl);
-            paymentMethod.Description.Should().Equals(nativePaymentMethod.Description);
+            Assert.Equal(paymentMethod.Code, nativePaymentMethod.Code);
+            Assert.Equal(paymentMethod.Name, nativePaymentMethod.Name);
+            Assert.Equal(paymentMethod.LogoUrl, nativePaymentMethod.LogoUrl);
+            Assert.Equal(paymentMethod.Description, nativePaymentMethod.Description);
         }
 
         private DynamicPaymentTypeService GerService()
