@@ -2,10 +2,11 @@ using System.Reflection;
 using EntityFrameworkCore.Triggers;
 using Microsoft.EntityFrameworkCore;
 using VirtoCommerce.NativePaymentMethods.Data.Models;
+using VirtoCommerce.Platform.Data.Infrastructure;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Repositories
 {
-    public class NativePaymentMethodsDbContext : DbContextWithTriggers
+    public class NativePaymentMethodsDbContext : DbContextBase
     {
         public const int PrimaryKeyLength = 128;
 
