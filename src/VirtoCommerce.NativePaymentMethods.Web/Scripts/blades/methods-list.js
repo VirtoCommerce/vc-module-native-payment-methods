@@ -1,6 +1,7 @@
 angular.module('NativePaymentMethods')
-    .controller('NativePaymentMethods.methodsListController', ['$scope', 'NativePaymentMethods.webApi', 'platformWebApp.bladeNavigationService',
-        ($scope, api, bladeNavigationService) => {
+    .controller('NativePaymentMethods.methodsListController',
+        ['$scope', 'NativePaymentMethods.webApi', 'platformWebApp.bladeNavigationService',
+           function ($scope, api, bladeNavigationService){
             var selectedItems = [];
 
             var blade = $scope.blade;

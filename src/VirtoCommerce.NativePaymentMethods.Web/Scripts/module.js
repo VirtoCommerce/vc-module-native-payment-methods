@@ -13,7 +13,7 @@ angular.module(moduleName, [])
                     url: '/NativePaymentMethods',
                     templateUrl: '$(Platform)/Scripts/common/templates/home.tpl.html',
                     controller: [
-                        '$scope', 'platformWebApp.bladeNavigationService', ($scope, bladeNavigationService) => {
+                        '$scope', 'platformWebApp.bladeNavigationService', function($scope, bladeNavigationService) {
                             var newBlade = {
                                 id: 'payment-methods-list',
                                 controller: 'NativePaymentMethods.methodsListController',
