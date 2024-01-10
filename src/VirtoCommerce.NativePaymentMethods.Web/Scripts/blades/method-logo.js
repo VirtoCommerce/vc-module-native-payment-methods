@@ -1,6 +1,6 @@
 angular.module('NativePaymentMethods')
     .controller('NativePaymentMethods.paymentDetailsLogoController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService',
-        ($scope, FileUploader, bladeNavigationService, dialogService) => {
+        function($scope, FileUploader, bladeNavigationService, dialogService){
             var blade = $scope.blade;
             blade.title = 'NativePaymentMethods.blades.payment-logo.title';
 

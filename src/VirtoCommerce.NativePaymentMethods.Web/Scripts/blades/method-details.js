@@ -1,7 +1,7 @@
 angular.module('NativePaymentMethods')
     .controller('NativePaymentMethods.methodDetailsController', ['$scope', 'NativePaymentMethods.webApi',
         'platformWebApp.objCompareService', 'platformWebApp.dialogService', 'platformWebApp.bladeNavigationService',
-        ($scope, api, objCompareService, dialogService, bladeNavigationService) => {
+        function($scope, api, objCompareService, dialogService, bladeNavigationService) {
             var blade = $scope.blade;
 
             blade.headIcon = 'fa fa-money';
