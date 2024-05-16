@@ -16,7 +16,7 @@ using VirtoCommerce.NativePaymentMethods.Data.Services;
 using VirtoCommerce.NativePaymentMethods.Data.SqlServer;
 using VirtoCommerce.NativePaymentMethods.Data.Validation;
 using VirtoCommerce.PaymentModule.Core.Events;
-using VirtoCommerce.Platform.Core.Bus;
+using VirtoCommerce.Platform.Core.Events;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
@@ -85,8 +85,7 @@ namespace VirtoCommerce.NativePaymentMethods.Web
             dynamicPaymentTypeService.InitDynamicPaymentMethods(activePaymentMethods.Results);
 
             // subscribe to payment module "refresh payment methods" event
-            var handlerRegistrar = appBuilder.ApplicationServices.GetService<IHandlerRegistrar>();
-            handlerRegistrar.RegisterHandler<PaymentMethodInstancingEvent>(async (message, _) => await appBuilder.ApplicationServices.GetService<PaymentMethodInstancingEventHandler>().Handle(message));
+            appBuilder.RegisterEventHandler<PaymentMethodInstancingEvent, PaymentMethodInstancingEventHandler>();
         }
 
         public void Uninstall()
