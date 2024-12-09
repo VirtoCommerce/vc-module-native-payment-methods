@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "Méthodes de paiement non intégratives",
+    "blades": {
+      "methods-list": {
+        "title": "Méthodes de paiement non intégratives",
+        "labels": {
+          "payment-methods": "Méthodes de paiement"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "Nouvelle méthode de paiement",
+          "name": "Nom",
+          "code": "Code",
+          "description": "Description",
+          "isEnabled": "Activé"
+        }
+      },
+      "payment-logo": {
+        "title": "Logo de paiement"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "Logo de paiement"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Enregistrer les modifications",
+        "message": "Les données ont été modifiées. Voulez-vous enregistrer les modifications ?"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "Ouvrir le menu des méthodes de paiement natives",
+    "NativePaymentMethods:create": "Créer des données liées aux méthodes de paiement natives",
+    "NativePaymentMethods:read": "Voir les données liées aux méthodes de paiement natives",
+    "NativePaymentMethods:update": "Mettre à jour les données liées aux méthodes de paiement natives",
+    "NativePaymentMethods:delete": "Supprimer les données liées aux méthodes de paiement natives"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "Paramètre par défaut",
+        "description": "Paramètres par défaut pour la méthode de paiement non intégrative"
+      }
+    }
+  }
+}

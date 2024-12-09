@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "非統合型支払い方法",
+    "blades": {
+      "methods-list": {
+        "title": "非統合型支払い方法",
+        "labels": {
+          "payment-methods": "支払い方法"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "新しい支払い方法",
+          "name": "名前",
+          "code": "コード",
+          "description": "説明",
+          "isEnabled": "有効"
+        }
+      },
+      "payment-logo": {
+        "title": "支払いロゴ"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "支払いロゴ"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "変更を保存",
+        "message": "データが変更されました。変更を保存しますか？"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "ネイティブ支払い方法メニューを開く",
+    "NativePaymentMethods:create": "ネイティブ支払い方法に関連するデータを作成",
+    "NativePaymentMethods:read": "ネイティブ支払い方法に関連するデータを表示",
+    "NativePaymentMethods:update": "ネイティブ支払い方法に関連するデータを更新",
+    "NativePaymentMethods:delete": "ネイティブ支払い方法に関連するデータを削除"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "デフォルト設定",
+        "description": "非統合型支払い方法のデフォルト設定"
+      }
+    }
+  }
+}

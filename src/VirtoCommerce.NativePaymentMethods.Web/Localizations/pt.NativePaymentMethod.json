@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "Métodos de pagamento não integrativos",
+    "blades": {
+      "methods-list": {
+        "title": "Métodos de pagamento não integrativos",
+        "labels": {
+          "payment-methods": "Métodos de pagamento"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "Novo método de pagamento",
+          "name": "Nome",
+          "code": "Código",
+          "description": "Descrição",
+          "isEnabled": "Ativado"
+        }
+      },
+      "payment-logo": {
+        "title": "Logotipo de pagamento"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "Logotipo de pagamento"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Salvar alterações",
+        "message": "Os dados foram modificados. Deseja salvar as alterações?"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "Abrir menu de métodos de pagamento nativos",
+    "NativePaymentMethods:create": "Criar dados relacionados a métodos de pagamento nativos",
+    "NativePaymentMethods:read": "Visualizar dados relacionados a métodos de pagamento nativos",
+    "NativePaymentMethods:update": "Atualizar dados relacionados a métodos de pagamento nativos",
+    "NativePaymentMethods:delete": "Excluir dados relacionados a métodos de pagamento nativos"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "Configuração padrão",
+        "description": "Configurações padrão para o método de pagamento não integrativo"
+      }
+    }
+  }
+}

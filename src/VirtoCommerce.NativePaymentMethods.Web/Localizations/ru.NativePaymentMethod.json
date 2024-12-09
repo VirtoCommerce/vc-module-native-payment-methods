@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "Неинтегрированные методы оплаты",
+    "blades": {
+      "methods-list": {
+        "title": "Неинтегрированные методы оплаты",
+        "labels": {
+          "payment-methods": "Методы оплаты"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "Новый метод оплаты",
+          "name": "Имя",
+          "code": "Код",
+          "description": "Описание",
+          "isEnabled": "Включено"
+        }
+      },
+      "payment-logo": {
+        "title": "Логотип платежного метода"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "Логотип платежного метода"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Сохранить изменения",
+        "message": "Данные были изменены. Вы хотите сохранить изменения?"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "Открыть меню нативных методов оплаты",
+    "NativePaymentMethods:create": "Создать данные, связанные с нативными методами оплаты",
+    "NativePaymentMethods:read": "Просмотр данных, связанных с нативными методами оплаты",
+    "NativePaymentMethods:update": "Обновить данные, связанные с нативными методами оплаты",
+    "NativePaymentMethods:delete": "Удалить данные, связанные с нативными методами оплаты"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "Настройка по умолчанию",
+        "description": "Настройки по умолчанию для неинтегрированного метода оплаты"
+      }
+    }
+  }
+}

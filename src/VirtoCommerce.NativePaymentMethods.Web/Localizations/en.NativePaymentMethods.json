@@ -34,11 +34,11 @@
     }
   },
     "permissions": {
-        "NativePaymentMethods:access": "Open NativePaymentMethods menu",
-        "NativePaymentMethods:create": "Create NativePaymentMethods related data",
-        "NativePaymentMethods:read": "View NativePaymentMethods related data",
-        "NativePaymentMethods:update": "Update NativePaymentMethods related data",
-        "NativePaymentMethods:delete": "Delete NativePaymentMethods related data"
+        "NativePaymentMethods:access": "Open native payment methods menu",
+        "NativePaymentMethods:create": "Create native payment methods related data",
+        "NativePaymentMethods:read": "View native payment methods related data",
+        "NativePaymentMethods:update": "Update native payment methods related data",
+        "NativePaymentMethods:delete": "Delete native payment methods related data"
     },
     "settings": {
       "NativePaymentMethods": {
