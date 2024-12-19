@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "Metody płatności nieintegracyjne",
+    "blades": {
+      "methods-list": {
+        "title": "Metody płatności nieintegracyjne",
+        "labels": {
+          "payment-methods": "Metody płatności"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "Nowa metoda płatności",
+          "name": "Nazwa",
+          "code": "Kod",
+          "description": "Opis",
+          "isEnabled": "Włączone"
+        }
+      },
+      "payment-logo": {
+        "title": "Logo płatności"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "Logo płatności"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Zapisz zmiany",
+        "message": "Dane zostały zmodyfikowane. Czy chcesz zapisać zmiany?"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "Otwórz menu natywnych metod płatności",
+    "NativePaymentMethods:create": "Utwórz dane związane z natywnymi metodami płatności",
+    "NativePaymentMethods:read": "Wyświetl dane związane z natywnymi metodami płatności",
+    "NativePaymentMethods:update": "Zaktualizuj dane związane z natywnymi metodami płatności",
+    "NativePaymentMethods:delete": "Usuń dane związane z natywnymi metodami płatności"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "Ustawienie domyślne",
+        "description": "Domyślne ustawienia dla nieintegracyjnej metody płatności"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "非集成支付方式",
+    "blades": {
+      "methods-list": {
+        "title": "非集成支付方式",
+        "labels": {
+          "payment-methods": "支付方式"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "新支付方式",
+          "name": "名称",
+          "code": "代码",
+          "description": "描述",
+          "isEnabled": "启用"
+        }
+      },
+      "payment-logo": {
+        "title": "支付标志"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "支付标志"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "保存更改",
+        "message": "数据已被修改。您要保存更改吗？"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "打开本地支付方式菜单",
+    "NativePaymentMethods:create": "创建与本地支付方式相关的数据",
+    "NativePaymentMethods:read": "查看与本地支付方式相关的数据",
+    "NativePaymentMethods:update": "更新与本地支付方式相关的数据",
+    "NativePaymentMethods:delete": "删除与本地支付方式相关的数据"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "默认设置",
+        "description": "非集成支付方式的默认设置"
+      }
+    }
+  }
+}

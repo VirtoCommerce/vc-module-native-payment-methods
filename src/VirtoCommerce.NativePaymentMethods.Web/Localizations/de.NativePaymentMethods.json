@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "Nicht-integrierte Zahlungsmethoden",
+    "blades": {
+      "methods-list": {
+        "title": "Nicht-integrierte Zahlungsmethoden",
+        "labels": {
+          "payment-methods": "Zahlungsmethoden"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "Neue Zahlungsmethode",
+          "name": "Name",
+          "code": "Code",
+          "description": "Beschreibung",
+          "isEnabled": "Aktiviert"
+        }
+      },
+      "payment-logo": {
+        "title": "Zahlungslogo"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "Zahlungslogo"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Änderungen speichern",
+        "message": "Die Daten wurden geändert. Möchten Sie die Änderungen speichern?"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "Menü für native Zahlungsmethoden öffnen",
+    "NativePaymentMethods:create": "Daten zu nativen Zahlungsmethoden erstellen",
+    "NativePaymentMethods:read": "Daten zu nativen Zahlungsmethoden anzeigen",
+    "NativePaymentMethods:update": "Daten zu nativen Zahlungsmethoden aktualisieren",
+    "NativePaymentMethods:delete": "Daten zu nativen Zahlungsmethoden löschen"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "Standardeinstellung",
+        "description": "Standardeinstellungen für nicht-integrierte Zahlungsmethode"
+      }
+    }
+  }
+}
