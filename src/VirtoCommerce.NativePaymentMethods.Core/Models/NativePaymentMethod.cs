@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Specialized;
+using System.Threading;
+using System.Threading.Tasks;
 using VirtoCommerce.PaymentModule.Core.Model;
 using VirtoCommerce.PaymentModule.Model.Requests;
 
@@ -18,34 +20,34 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
 
         public override PaymentMethodGroupType PaymentMethodGroupType => PaymentMethodGroupType.Manual;
 
-        public override ProcessPaymentRequestResult ProcessPayment(ProcessPaymentRequest request)
+        public override Task<ProcessPaymentRequestResult> ProcessPaymentAsync(ProcessPaymentRequest request, CancellationToken cancellationToken = default)
         {
-            return new ProcessPaymentRequestResult { IsSuccess = true };
+            return Task.FromResult(new ProcessPaymentRequestResult { IsSuccess = true });
         }
 
-        public override PostProcessPaymentRequestResult PostProcessPayment(PostProcessPaymentRequest request)
+        public override Task<PostProcessPaymentRequestResult> PostProcessPaymentAsync(PostProcessPaymentRequest request, CancellationToken cancellationToken = default)
         {
-            return new PostProcessPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid };
+            return Task.FromResult(new PostProcessPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid });
         }
 
-        public override VoidPaymentRequestResult VoidProcessPayment(VoidPaymentRequest request)
+        public override Task<VoidPaymentRequestResult> VoidProcessPaymentAsync(VoidPaymentRequest request, CancellationToken cancellationToken = default)
         {
-            return new VoidPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Voided };
+            return Task.FromResult(new VoidPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Voided });
         }
 
-        public override CapturePaymentRequestResult CaptureProcessPayment(CapturePaymentRequest request)
+        public override Task<CapturePaymentRequestResult> CaptureProcessPaymentAsync(CapturePaymentRequest request, CancellationToken cancellationToken = default)
         {
-            return new CapturePaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid };
+            return Task.FromResult(new CapturePaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid });
         }
 
-        public override RefundPaymentRequestResult RefundProcessPayment(RefundPaymentRequest request)
+        public override Task<RefundPaymentRequestResult> RefundProcessPaymentAsync(RefundPaymentRequest request, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public override ValidatePostProcessRequestResult ValidatePostProcessRequest(NameValueCollection queryString)
+        public override Task<ValidatePostProcessRequestResult> ValidatePostProcessRequestAsync(NameValueCollection queryString, CancellationToken cancellationToken = default)
         {
-            return new ValidatePostProcessRequestResult { IsSuccess = true };
+            return Task.FromResult(new ValidatePostProcessRequestResult { IsSuccess = true });
         }
     }
 }
