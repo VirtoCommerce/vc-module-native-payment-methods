@@ -20,32 +20,32 @@ namespace VirtoCommerce.NativePaymentMethods.Core.Models
 
         public override PaymentMethodGroupType PaymentMethodGroupType => PaymentMethodGroupType.Manual;
 
-        public override Task<ProcessPaymentRequestResult> ProcessPaymentAsync(ProcessPaymentRequest request, CancellationToken cancelationToken = default)
+        public override Task<ProcessPaymentRequestResult> ProcessPaymentAsync(ProcessPaymentRequest request, CancellationToken cancellationToken = default)
         {
             return Task.FromResult(new ProcessPaymentRequestResult { IsSuccess = true });
         }
 
-        public override Task<PostProcessPaymentRequestResult> PostProcessPaymentAsync(PostProcessPaymentRequest request, CancellationToken cancelationToken = default)
+        public override Task<PostProcessPaymentRequestResult> PostProcessPaymentAsync(PostProcessPaymentRequest request, CancellationToken cancellationToken = default)
         {
             return Task.FromResult(new PostProcessPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid });
         }
 
-        public override Task<VoidPaymentRequestResult> VoidProcessPaymentAsync(VoidPaymentRequest request, CancellationToken cancelationToken = default)
+        public override Task<VoidPaymentRequestResult> VoidProcessPaymentAsync(VoidPaymentRequest request, CancellationToken cancellationToken = default)
         {
             return Task.FromResult(new VoidPaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Voided });
         }
 
-        public override Task<CapturePaymentRequestResult> CaptureProcessPaymentAsync(CapturePaymentRequest request, CancellationToken cancelationToken = default)
+        public override Task<CapturePaymentRequestResult> CaptureProcessPaymentAsync(CapturePaymentRequest request, CancellationToken cancellationToken = default)
         {
             return Task.FromResult(new CapturePaymentRequestResult { IsSuccess = true, NewPaymentStatus = PaymentStatus.Paid });
         }
 
-        public override Task<RefundPaymentRequestResult> RefundProcessPaymentAsync(RefundPaymentRequest request, CancellationToken cancelationToken = default)
+        public override Task<RefundPaymentRequestResult> RefundProcessPaymentAsync(RefundPaymentRequest request, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<ValidatePostProcessRequestResult> ValidatePostProcessRequestAsync(NameValueCollection queryString, CancellationToken cancelationToken = default)
+        public override Task<ValidatePostProcessRequestResult> ValidatePostProcessRequestAsync(NameValueCollection queryString, CancellationToken cancellationToken = default)
         {
             return Task.FromResult(new ValidatePostProcessRequestResult { IsSuccess = true });
         }
