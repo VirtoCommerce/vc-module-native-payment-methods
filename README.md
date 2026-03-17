@@ -1,4 +1,4 @@
-# Virto Commerce Native Payment Methods Module
+# Native Payment Methods Module
 
 This module enables creating non-integrative payment methods without code changes. Such methods cannon provide any functionality similar to the manual test payment method; at the same time, they have various code pieces, names, descriptions, and logos, and may be useful to designate various kinds of cash payments.
 
