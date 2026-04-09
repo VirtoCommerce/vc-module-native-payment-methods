@@ -3,7 +3,7 @@
   <id>VirtoCommerce.NativePaymentMethods</id>
   <version>3.1001.0</version>
   <version-tag />
-  <platformVersion>3.1017.0-alpha.13242-vcst-4897</platformVersion>
+  <platformVersion>3.1017.0</platformVersion>
   <dependencies>
     <dependency id="VirtoCommerce.Payment" version="3.1000.0" />
   </dependencies>

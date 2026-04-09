@@ -9,7 +9,7 @@
   <ItemGroup>
     
     <PackageReference Include="VirtoCommerce.PaymentModule.Core" Version="3.1000.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1017.0-alpha.13242-vcst-4897" />
+    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1017.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.NativePaymentMethods.Core\VirtoCommerce.NativePaymentMethods.Core.csproj" />
