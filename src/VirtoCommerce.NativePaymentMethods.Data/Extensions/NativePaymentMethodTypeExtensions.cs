@@ -16,34 +16,18 @@ namespace VirtoCommerce.NativePaymentMethods.Data.Extensions
 
         public static void RemoveTypeByName<TBaseType>(string typeName)
         {
-            if (AbstractTypeFactory<TBaseType>.AllTypeInfos is IList<TypeInfo<TBaseType>> types)
-            {
-                var typeInfo = types.FirstOrDefault(x => x.Type.Name == typeName);
-
-                if (typeInfo != null)
-                {
-                    types.Remove(typeInfo);
-                }
-            }
+            AbstractTypeFactory<TBaseType>.RemoveType(typeName);
         }
 
         // Need to compare existing dynamic types by name so that's why can't use the default AbstractTypeFactory<PaymentMethod>.RegisterType(type)
+        // Dynamic types are recreated with the same name but as different Type objects, so the platform's
+        // RegisterType (which deduplicates by type identity) won't catch duplicates.
         public static TypeInfo<TBaseType> RegisterType<TBaseType>(Type type)
         {
-            TypeInfo<TBaseType> typeInfo = null;
+            var typeInfo = AbstractTypeFactory<TBaseType>.AllTypeInfos
+                .FirstOrDefault(x => x.Type.Name == type.Name);
 
-            if (AbstractTypeFactory<TBaseType>.AllTypeInfos is IList<TypeInfo<TBaseType>> types)
-            {
-                typeInfo = types.FirstOrDefault(x => x.Type.Name == type.Name);
-
-                if (typeInfo == null)
-                {
-                    typeInfo = new TypeInfo<TBaseType>(type);
-                    types.Add(typeInfo);
-                }
-            }
-
-            return typeInfo;
+            return typeInfo ?? AbstractTypeFactory<TBaseType>.RegisterType(type);
         }
     }
 }
