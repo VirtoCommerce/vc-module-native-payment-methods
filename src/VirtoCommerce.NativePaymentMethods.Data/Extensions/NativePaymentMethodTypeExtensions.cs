@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using VirtoCommerce.NativePaymentMethods.Core;
+using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.NativePaymentMethods.Data.Extensions
 {
