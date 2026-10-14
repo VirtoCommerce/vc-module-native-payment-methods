@@ -93,13 +93,10 @@ const stored = ref<NativePaymentMethod>({});
 
 // the server's rule (NativePaymentMethodValidator)
 const CODE = /^[_0-9A-Za-z]+$/;
-const codeError = computed(() =>
-  !item.value.code
-    ? t("NATIVE_PAYMENT_METHODS.DETAILS.REQUIRED")
-    : CODE.test(item.value.code)
-      ? undefined
-      : t("NATIVE_PAYMENT_METHODS.DETAILS.CODE_INVALID"),
-);
+const codeError = computed(() => {
+  if (!item.value.code) return t("NATIVE_PAYMENT_METHODS.DETAILS.REQUIRED");
+  return CODE.test(item.value.code) ? undefined : t("NATIVE_PAYMENT_METHODS.DETAILS.CODE_INVALID");
+});
 
 const form = useBladeForm({
   data: item,

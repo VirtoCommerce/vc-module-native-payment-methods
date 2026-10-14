@@ -1,5 +1,4 @@
 {
-  // Non-integrative payment methods admin UI for the Admin Shell host (Module Federation remote)
   "remote": { "name": "native_payment_methods_admin", "exposed": "./Module" },
   "contributions": {
     "menu": [
