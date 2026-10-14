@@ -335,3 +335,5 @@ ASALocalRun/
 *.nupkg
 *.zip
 /src/VirtoCommerce.NativePaymentMethods.Web/dist/
+# Admin Shell module UI build output (built from src/VirtoCommerce.NativePaymentMethods.Web/vue)
+src/VirtoCommerce.NativePaymentMethods.Web/plugins/
