@@ -1,7 +1,7 @@
 {
   "NATIVE_PAYMENT_METHODS": {
     "LIST": {
-      "TITLE": "Non-integrative payment methods",
+      "TITLE": "Non-Integrative Payment Methods",
       "EMPTY": "No payment methods yet",
       "ENABLED": "Enabled",
       "DISABLED": "Disabled",

@@ -5,7 +5,7 @@
       {
         "id": "nativePaymentMethods",
         "sectionId": "configuration",
-        "title": "Non-integrative payment methods",
+        "title": "Non-Integrative Payment Methods",
         "icon": "lucide-banknote",
         "route": "/native-payment-methods",
         "permission": "NativePaymentMethods:access",
