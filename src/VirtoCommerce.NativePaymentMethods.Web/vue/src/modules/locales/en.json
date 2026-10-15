@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "Non-Integrative Payment Methods",
+      "EMPTY": "No payment methods yet",
+      "ENABLED": "Enabled",
+      "DISABLED": "Disabled",
+      "DELETE_CONFIRM": "Delete {count} payment method(s)? Stores using them lose these methods."
+    },
+    "DETAILS": {
+      "NEW_TITLE": "New payment method",
+      "GENERAL": "General",
+      "REQUIRED": "Required",
+      "CODE_HINT": "Latin letters, digits and underscores; can't be changed later",
+      "CODE_INVALID": "Code can contain only Latin letters, digits and underscores (_)",
+      "LOGO_HINT": "PNG, JPG or SVG, at least 30px high",
+      "SAVED": "Payment method saved",
+      "CLOSE_CONFIRM": "The payment method has been modified. Close without saving?"
+    },
+    "FIELDS": {
+      "CODE": "Code",
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "IS_ENABLED": "Enabled",
+      "LOGO": "Payment logo",
+      "LOGO_SHORT": "Logo"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Refresh",
+      "ADD": "Add",
+      "DELETE": "Delete",
+      "CREATE": "Create",
+      "SAVE": "Save",
+      "RESET": "Reset"
+    }
+  }
+}
