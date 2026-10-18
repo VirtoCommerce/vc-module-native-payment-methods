@@ -1,4 +1,38 @@
 {
+  "NativePaymentMethods": {
+    "menu-item-name": "אמצעי תשלום ללא אינטגרציה",
+    "blades": {
+      "methods-list": {
+        "title": "אמצעי תשלום ללא אינטגרציה",
+        "labels": {
+          "payment-methods": "אמצעי תשלום"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "אמצעי תשלום חדש",
+          "name": "שם",
+          "code": "קוד",
+          "description": "תיאור",
+          "isEnabled": "מופעל"
+        }
+      },
+      "payment-logo": {
+        "title": "לוגו התשלום"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "לוגו התשלום"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "שמירת שינויים",
+        "message": "הנתונים שונו. לשמור את השינויים?"
+      }
+    }
+  },
   "permissions": {
     "NativePaymentMethods:access": "פתיחת תפריט אמצעי התשלום המובנים",
     "NativePaymentMethods:create": "יצירת נתונים הקשורים לאמצעי תשלום מובנים",

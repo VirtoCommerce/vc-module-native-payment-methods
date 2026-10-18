@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "Integroimattomat maksutavat",
+    "blades": {
+      "methods-list": {
+        "title": "Integroimattomat maksutavat",
+        "labels": {
+          "payment-methods": "Maksutavat"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "Uusi maksutapa",
+          "name": "Nimi",
+          "code": "Koodi",
+          "description": "Kuvaus",
+          "isEnabled": "Käytössä"
+        }
+      },
+      "payment-logo": {
+        "title": "Maksutavan logo"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "Maksutavan logo"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Tallenna muutokset",
+        "message": "Tietoja on muokattu. Haluatko tallentaa muutokset?"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "Avaa integroimattomien maksutapojen valikko",
+    "NativePaymentMethods:create": "Luo integroimattomiin maksutapoihin liittyviä tietoja",
+    "NativePaymentMethods:read": "Tarkastele integroimattomiin maksutapoihin liittyviä tietoja",
+    "NativePaymentMethods:update": "Päivitä integroimattomiin maksutapoihin liittyviä tietoja",
+    "NativePaymentMethods:delete": "Poista integroimattomiin maksutapoihin liittyviä tietoja"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "Oletusasetus",
+        "description": "Integroimattoman maksutavan oletusasetukset"
+      }
+    }
+  }
+}
