@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "طرق الدفع بدون تكامل",
+    "blades": {
+      "methods-list": {
+        "title": "طرق الدفع بدون تكامل",
+        "labels": {
+          "payment-methods": "طرق الدفع"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "طريقة دفع جديدة",
+          "name": "الاسم",
+          "code": "الرمز",
+          "description": "الوصف",
+          "isEnabled": "مفعّلة"
+        }
+      },
+      "payment-logo": {
+        "title": "شعار طريقة الدفع"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "شعار طريقة الدفع"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "حفظ التغييرات",
+        "message": "تم تعديل البيانات. هل تريد حفظ التغييرات؟"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "فتح قائمة طرق الدفع بدون تكامل",
+    "NativePaymentMethods:create": "إنشاء البيانات المتعلقة بطرق الدفع بدون تكامل",
+    "NativePaymentMethods:read": "عرض البيانات المتعلقة بطرق الدفع بدون تكامل",
+    "NativePaymentMethods:update": "تحديث البيانات المتعلقة بطرق الدفع بدون تكامل",
+    "NativePaymentMethods:delete": "حذف البيانات المتعلقة بطرق الدفع بدون تكامل"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "الإعداد الافتراضي",
+        "description": "الإعدادات الافتراضية لطريقة الدفع بدون تكامل"
+      }
+    }
+  }
+}
