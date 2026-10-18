@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "非統合型支払い方法",
+      "EMPTY": "支払い方法はまだありません",
+      "ENABLED": "有効",
+      "DISABLED": "無効",
+      "DELETE_CONFIRM": "{count} 件の支払い方法を削除しますか？これらを使用しているストアでは、この支払い方法が使えなくなります。"
+    },
+    "DETAILS": {
+      "NEW_TITLE": "新しい支払い方法",
+      "GENERAL": "一般",
+      "REQUIRED": "必須",
+      "CODE_HINT": "ラテン文字、数字、アンダースコアのみ。後から変更できません",
+      "CODE_INVALID": "コードに使用できるのはラテン文字、数字、アンダースコア（_）のみです",
+      "LOGO_HINT": "PNG、JPG、SVG（高さ 30px 以上）",
+      "SAVED": "支払い方法を保存しました",
+      "CLOSE_CONFIRM": "支払い方法が変更されました。保存せずに閉じますか？"
+    },
+    "FIELDS": {
+      "CODE": "コード",
+      "NAME": "名前",
+      "DESCRIPTION": "説明",
+      "IS_ENABLED": "有効",
+      "LOGO": "支払いロゴ",
+      "LOGO_SHORT": "ロゴ"
+    },
+    "TOOLBAR": {
+      "REFRESH": "更新",
+      "ADD": "追加",
+      "DELETE": "削除",
+      "CREATE": "作成",
+      "SAVE": "保存",
+      "RESET": "リセット"
+    }
+  }
+}

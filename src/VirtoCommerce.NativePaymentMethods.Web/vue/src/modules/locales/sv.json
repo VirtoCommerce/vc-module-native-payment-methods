@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "Icke-integrerade betalningsmetoder",
+      "EMPTY": "Inga betalningsmetoder ännu",
+      "ENABLED": "Aktiverad",
+      "DISABLED": "Inaktiverad",
+      "DELETE_CONFIRM": "Ta bort {count} betalningsmetod(er)? Butiker som använder dem förlorar dessa metoder."
+    },
+    "DETAILS": {
+      "NEW_TITLE": "Ny betalningsmetod",
+      "GENERAL": "Allmänt",
+      "REQUIRED": "Obligatoriskt",
+      "CODE_HINT": "Latinska bokstäver, siffror och understreck; kan inte ändras senare",
+      "CODE_INVALID": "Koden får bara innehålla latinska bokstäver, siffror och understreck (_)",
+      "LOGO_HINT": "PNG, JPG eller SVG, minst 30px hög",
+      "SAVED": "Betalningsmetoden har sparats",
+      "CLOSE_CONFIRM": "Betalningsmetoden har ändrats. Stäng utan att spara?"
+    },
+    "FIELDS": {
+      "CODE": "Kod",
+      "NAME": "Namn",
+      "DESCRIPTION": "Beskrivning",
+      "IS_ENABLED": "Aktiverad",
+      "LOGO": "Betalningslogotyp",
+      "LOGO_SHORT": "Logotyp"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Uppdatera",
+      "ADD": "Lägg till",
+      "DELETE": "Ta bort",
+      "CREATE": "Skapa",
+      "SAVE": "Spara",
+      "RESET": "Återställ"
+    }
+  }
+}

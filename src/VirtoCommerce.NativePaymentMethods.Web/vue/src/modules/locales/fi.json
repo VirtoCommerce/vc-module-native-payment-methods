@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "Integroimattomat maksutavat",
+      "EMPTY": "Ei vielä maksutapoja",
+      "ENABLED": "Käytössä",
+      "DISABLED": "Pois käytöstä",
+      "DELETE_CONFIRM": "Poistetaanko {count} maksutapaa? Niitä käyttävät kaupat menettävät nämä maksutavat."
+    },
+    "DETAILS": {
+      "NEW_TITLE": "Uusi maksutapa",
+      "GENERAL": "Yleiset",
+      "REQUIRED": "Pakollinen",
+      "CODE_HINT": "Latinalaiset kirjaimet, numerot ja alaviivat; ei voi muuttaa myöhemmin",
+      "CODE_INVALID": "Koodi voi sisältää vain latinalaisia kirjaimia, numeroita ja alaviivoja (_)",
+      "LOGO_HINT": "PNG, JPG tai SVG, vähintään 30px korkea",
+      "SAVED": "Maksutapa tallennettu",
+      "CLOSE_CONFIRM": "Maksutapaa on muokattu. Suljetaanko tallentamatta?"
+    },
+    "FIELDS": {
+      "CODE": "Koodi",
+      "NAME": "Nimi",
+      "DESCRIPTION": "Kuvaus",
+      "IS_ENABLED": "Käytössä",
+      "LOGO": "Maksutavan logo",
+      "LOGO_SHORT": "Logo"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Päivitä",
+      "ADD": "Lisää",
+      "DELETE": "Poista",
+      "CREATE": "Luo",
+      "SAVE": "Tallenna",
+      "RESET": "Palauta"
+    }
+  }
+}
