@@ -1,0 +1,51 @@
+{
+  "NativePaymentMethods": {
+    "menu-item-name": "Ikke-integrerte betalingsmetoder",
+    "blades": {
+      "methods-list": {
+        "title": "Ikke-integrerte betalingsmetoder",
+        "labels": {
+          "payment-methods": "Betalingsmetoder"
+        }
+      },
+      "method-details": {
+        "labels": {
+          "new-method": "Ny betalingsmetode",
+          "name": "Navn",
+          "code": "Kode",
+          "description": "Beskrivelse",
+          "isEnabled": "Aktivert"
+        }
+      },
+      "payment-logo": {
+        "title": "Betalingslogo"
+      }
+    },
+    "widgets": {
+      "payment-logo": {
+        "title": "Betalingslogo"
+      }
+    },
+    "dialogs": {
+      "payment-details-save": {
+        "title": "Lagre endringer",
+        "message": "Dataene er endret. Vil du lagre endringene?"
+      }
+    }
+  },
+  "permissions": {
+    "NativePaymentMethods:access": "Åpne menyen for ikke-integrerte betalingsmetoder",
+    "NativePaymentMethods:create": "Opprette data knyttet til ikke-integrerte betalingsmetoder",
+    "NativePaymentMethods:read": "Vise data knyttet til ikke-integrerte betalingsmetoder",
+    "NativePaymentMethods:update": "Oppdatere data knyttet til ikke-integrerte betalingsmetoder",
+    "NativePaymentMethods:delete": "Slette data knyttet til ikke-integrerte betalingsmetoder"
+  },
+  "settings": {
+    "NativePaymentMethods": {
+      "DefaultSetting": {
+        "title": "Standardinnstilling",
+        "description": "Standardinnstillinger for ikke-integrert betalingsmetode"
+      }
+    }
+  }
+}

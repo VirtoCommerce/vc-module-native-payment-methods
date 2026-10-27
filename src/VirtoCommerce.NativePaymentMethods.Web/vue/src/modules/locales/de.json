@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "Nicht-integrierte Zahlungsmethoden",
+      "EMPTY": "Noch keine Zahlungsmethoden",
+      "ENABLED": "Aktiviert",
+      "DISABLED": "Deaktiviert",
+      "DELETE_CONFIRM": "{count} Zahlungsmethode(n) löschen? Shops, die sie verwenden, verlieren diese Methoden."
+    },
+    "DETAILS": {
+      "NEW_TITLE": "Neue Zahlungsmethode",
+      "GENERAL": "Allgemein",
+      "REQUIRED": "Erforderlich",
+      "CODE_HINT": "Lateinische Buchstaben, Ziffern und Unterstriche; kann später nicht geändert werden",
+      "CODE_INVALID": "Der Code darf nur lateinische Buchstaben, Ziffern und Unterstriche (_) enthalten",
+      "LOGO_HINT": "PNG, JPG oder SVG, mindestens 30px hoch",
+      "SAVED": "Zahlungsmethode gespeichert",
+      "CLOSE_CONFIRM": "Die Zahlungsmethode wurde geändert. Ohne Speichern schließen?"
+    },
+    "FIELDS": {
+      "CODE": "Code",
+      "NAME": "Name",
+      "DESCRIPTION": "Beschreibung",
+      "IS_ENABLED": "Aktiviert",
+      "LOGO": "Zahlungslogo",
+      "LOGO_SHORT": "Logo"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Aktualisieren",
+      "ADD": "Hinzufügen",
+      "DELETE": "Löschen",
+      "CREATE": "Erstellen",
+      "SAVE": "Speichern",
+      "RESET": "Zurücksetzen"
+    }
+  }
+}

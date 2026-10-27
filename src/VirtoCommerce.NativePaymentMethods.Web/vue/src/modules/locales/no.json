@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "Ikke-integrerte betalingsmetoder",
+      "EMPTY": "Ingen betalingsmetoder ennå",
+      "ENABLED": "Aktivert",
+      "DISABLED": "Deaktivert",
+      "DELETE_CONFIRM": "Slette {count} betalingsmetode(r)? Butikker som bruker dem, mister disse metodene."
+    },
+    "DETAILS": {
+      "NEW_TITLE": "Ny betalingsmetode",
+      "GENERAL": "Generelt",
+      "REQUIRED": "Obligatorisk",
+      "CODE_HINT": "Latinske bokstaver, sifre og understreker; kan ikke endres senere",
+      "CODE_INVALID": "Koden kan bare inneholde latinske bokstaver, sifre og understreker (_)",
+      "LOGO_HINT": "PNG, JPG eller SVG, minst 30px høy",
+      "SAVED": "Betalingsmetoden er lagret",
+      "CLOSE_CONFIRM": "Betalingsmetoden er endret. Lukke uten å lagre?"
+    },
+    "FIELDS": {
+      "CODE": "Kode",
+      "NAME": "Navn",
+      "DESCRIPTION": "Beskrivelse",
+      "IS_ENABLED": "Aktivert",
+      "LOGO": "Betalingslogo",
+      "LOGO_SHORT": "Logo"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Oppdater",
+      "ADD": "Legg til",
+      "DELETE": "Slett",
+      "CREATE": "Opprett",
+      "SAVE": "Lagre",
+      "RESET": "Tilbakestill"
+    }
+  }
+}

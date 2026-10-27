@@ -1,0 +1,16 @@
+{
+  "remote": { "name": "native_payment_methods_admin", "exposed": "./Module" },
+  "contributions": {
+    "menu": [
+      {
+        "id": "nativePaymentMethods",
+        "sectionId": "configuration",
+        "title": "Non-Integrative Payment Methods",
+        "icon": "lucide-banknote",
+        "route": "/native-payment-methods",
+        "permission": "NativePaymentMethods:access",
+        "priority": 15
+      }
+    ]
+  }
+}

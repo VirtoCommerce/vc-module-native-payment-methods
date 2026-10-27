@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "Metodi di pagamento non integrativi",
+      "EMPTY": "Ancora nessun metodo di pagamento",
+      "ENABLED": "Abilitato",
+      "DISABLED": "Disabilitato",
+      "DELETE_CONFIRM": "Eliminare {count} metodi di pagamento? I negozi che li utilizzano perderanno questi metodi."
+    },
+    "DETAILS": {
+      "NEW_TITLE": "Nuovo metodo di pagamento",
+      "GENERAL": "Generale",
+      "REQUIRED": "Obbligatorio",
+      "CODE_HINT": "Lettere latine, cifre e trattini bassi; non può essere modificato in seguito",
+      "CODE_INVALID": "Il codice può contenere solo lettere latine, cifre e trattini bassi (_)",
+      "LOGO_HINT": "PNG, JPG o SVG, alto almeno 30px",
+      "SAVED": "Metodo di pagamento salvato",
+      "CLOSE_CONFIRM": "Il metodo di pagamento è stato modificato. Chiudere senza salvare?"
+    },
+    "FIELDS": {
+      "CODE": "Codice",
+      "NAME": "Nome",
+      "DESCRIPTION": "Descrizione",
+      "IS_ENABLED": "Abilitato",
+      "LOGO": "Logo di pagamento",
+      "LOGO_SHORT": "Logo"
+    },
+    "TOOLBAR": {
+      "REFRESH": "Aggiorna",
+      "ADD": "Aggiungi",
+      "DELETE": "Elimina",
+      "CREATE": "Crea",
+      "SAVE": "Salva",
+      "RESET": "Reimposta"
+    }
+  }
+}

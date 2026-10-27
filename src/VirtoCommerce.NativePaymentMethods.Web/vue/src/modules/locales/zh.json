@@ -1,0 +1,37 @@
+{
+  "NATIVE_PAYMENT_METHODS": {
+    "LIST": {
+      "TITLE": "非集成支付方式",
+      "EMPTY": "暂无支付方式",
+      "ENABLED": "已启用",
+      "DISABLED": "已禁用",
+      "DELETE_CONFIRM": "删除 {count} 个支付方式？使用这些方式的商店将失去它们。"
+    },
+    "DETAILS": {
+      "NEW_TITLE": "新支付方式",
+      "GENERAL": "常规",
+      "REQUIRED": "必填",
+      "CODE_HINT": "拉丁字母、数字和下划线；之后无法更改",
+      "CODE_INVALID": "代码只能包含拉丁字母、数字和下划线 (_)",
+      "LOGO_HINT": "PNG、JPG 或 SVG，高度至少 30px",
+      "SAVED": "支付方式已保存",
+      "CLOSE_CONFIRM": "支付方式已修改。不保存就关闭吗？"
+    },
+    "FIELDS": {
+      "CODE": "代码",
+      "NAME": "名称",
+      "DESCRIPTION": "描述",
+      "IS_ENABLED": "启用",
+      "LOGO": "支付标志",
+      "LOGO_SHORT": "标志"
+    },
+    "TOOLBAR": {
+      "REFRESH": "刷新",
+      "ADD": "添加",
+      "DELETE": "删除",
+      "CREATE": "创建",
+      "SAVE": "保存",
+      "RESET": "重置"
+    }
+  }
+}
